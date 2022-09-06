@@ -1,0 +1,28 @@
+{
+    "kind": "SealedSecret",
+    "apiVersion": "bitnami.com/v1alpha1",
+    "metadata": {
+      "name": "authelia-values",
+      "namespace": "authelia",
+      "creationTimestamp": null,
+      "annotations": {
+        "sealedsecrets.bitnami.com/cluster-wide": "true"
+      }
+    },
+    "spec": {
+      "template": {
+        "metadata": {
+          "name": "authelia-values",
+          "namespace": "authelia",
+          "creationTimestamp": null,
+          "annotations": {
+            "sealedsecrets.bitnami.com/cluster-wide": "true"
+          }
+        },
+        "data": null
+      },
+      "encryptedData": {
+        "values.yaml": "AgCJkfwSTsAEV0jnU0oOSTg90OqDESLlNY4HtxaAUmN78/WMeCpf5+h+LZEI60wZ/RGec+7nCzsulJdorSfVksDGqt6QuchLSAmhcdehK4zAQWIFqkYv2d+HEzvLJZkXHIcmlFkg2eexM3JaeaDjX3Ne/1dGsYCqR3zlDbOL4yiZdiMD60McQ8loWA5NMqXt1+yB6mehByWs0VcOzGxulI0vtWL5QImg9uiOtRTErRzB39Zpri1H9ml4JWMve4lRo+F6XnrPIPM4p2P+QOxPjdT/eKOIlsJe/teYiMrl4Bky48+lzgosxgS4lM7VkprO5N0LqvBu52C7XNKaQBbwTyOXvIX1k9mihJxKQWhFyUET/svDFaPhh12oIFaUxhESWixlwv2EH5zpReVQ0cY6/XwVET1ErhU8g4MvBTM9saCDUs8T3DlGRM1tfLE0rGowopUoOVI+pQl+vDKIhzA1mvX2Kwxc3I3afQBNoo1qIIW4V5f0RKLLnkgfqrqraoT4RcvQMKYNRDoM6t2bE7qU2Eoxa2QrKciDI3F9eoRixWHTnCXr45EokJ+kuhUdzzeIzcw5aDP3AuSH3d5RFlHlvZOUbV0F5euSPPuvg4fEvNzA5r4o1WHmhCWDKvIy3SpYmgEr1I4MlWX6SdJlG3WBH7zv1PLgnFKxuQBclwzW+b11HM8tYn39apEV0GdT/oqHw/cOnM3hiq6paQQjoB2wnB7Ows3k8EHBmdG3D+vDSTkpH3keOt1AlK9EQydWvg0lsbj9pnYPg3qmtxpj/wy/ekxBDgtOkMe80Pn3NvULzrJEOtkykgUdVdUMlxvlKRolYPJSCDb+mYUOtfQFCfu5gqEfcpUbxqz05ClOla3IYmADhlwK5bR7ZSve9k5C3pENxya2APGFwd/MLwQhf+Mzgw=="
+      }
+    }
+  }

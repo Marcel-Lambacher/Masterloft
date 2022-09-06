@@ -16,7 +16,17 @@ spec:
   install:
     remediation:
       retries: 3
+
+  valuesFrom:
+    - kind: Secret
+      name: gitops-values
+
   values:
+    oidcSecret:
+      create: true
+      clientID: gitops
+      issuerURL: https://auth.masterloft.k8s.marcel-lambacher.de/
+      redirectURL: https://gitops.masterloft.k8s.marcel-lambacher.de/oauth2/callback
     adminUser:
       create: true
       username: marlam

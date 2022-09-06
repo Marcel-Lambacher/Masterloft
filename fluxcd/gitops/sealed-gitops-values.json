@@ -1,0 +1,28 @@
+{
+    "kind": "SealedSecret",
+    "apiVersion": "bitnami.com/v1alpha1",
+    "metadata": {
+      "name": "gitops-values",
+      "namespace": "gitops",
+      "creationTimestamp": null,
+      "annotations": {
+        "sealedsecrets.bitnami.com/cluster-wide": "true"
+      }
+    },
+    "spec": {
+      "template": {
+        "metadata": {
+          "name": "gitops-values",
+          "namespace": "gitops",
+          "creationTimestamp": null,
+          "annotations": {
+            "sealedsecrets.bitnami.com/cluster-wide": "true"
+          }
+        },
+        "data": null
+      },
+      "encryptedData": {
+        "values.yaml": "AgADRjis8P+5VLJEi4kyqeVI4oCZl0D2VB0MvpEToQcNs4ni/lyvdPoaAps1GMqJeg1B1dze/Af8BtI49xo+W8WGTG3hLj0hXVvnE7ITRpCjPvm1jRJaXofgkrHJ8zTy6tZ6lyATWwY37A5kWzkvKkulc3lrysjFx/qP/nNMJDPv++7shBMRTchlrdve35YFsadgMUL0Dodrco1fxpWCvRKpP8N9I7H2hmhk45NuLZ+N4Tgg2AxO8O2JTffgDcnBsO9B4wOaMn6iwm+Z8kLvE9Ip4fcRJgJ/fARxH4LPpBrNlELeDjUKoQo5NVrmj1GUpApDDOazeahyZUR8cZeN4tEIHhG/2JZziafg5b8gFdalkuE8PWt9Cvor1OoiO2hG9U5dI5N0c6PDsdsgLDeX3wVNGgrsoTiddV4GRYVqfWEhbpWdNLeqleOGKgRiuUMhC2j9XeGho92oSDBy938QD8b4TdAdFLoZ9VOEUhlmZfiBr4p36SB0XuSWUzNYBzT1TQiLZFR/Au8NtUkM/z6+7CWEUkmbA08mZmOYcW2OMjYXGnTrjYoWBRoJEjS7Z5kG+VAB5hXWDg/fpons4OdNuTE6vz21ZDd7VM1em4f4euYVsCQmFfIPvnUl0YtBMPyZPucvHbDedUxMdkN4fhTj1JxwunIua2PQyjAmipfTAW7irxNmTxZw8HpLreM+pLqRRLuerdQ1M6ZY8UeNusD1vAtHwR/m/mc7lgoFbgJzjIXhpiBwQAPsFYqlPwE6GSllGYYTbqa74+IX1sO7w7wjm28qFfnG1g/49gYwvG8vdk7Jk61+N1q36K1jug=="
+      }
+    }
+  }

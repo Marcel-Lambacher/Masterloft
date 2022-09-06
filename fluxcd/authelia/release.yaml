@@ -27,10 +27,14 @@ spec:
     disableWait: false
     force: true
 
+  valuesFrom:
+    - kind: Secret
+      name: authelia-values
+
   values:
-    persistence:
-      enabled: true
-      storageClass: "local-path-ssd-auto-backup"
+    # persistence:
+    #   enabled: true
+    #   storageClass: "local-path-ssd-auto-backup"
 
     secret:
       existingSecret: "authelia-secrets"
@@ -60,6 +64,39 @@ spec:
         secret: masterloft-k8s-marcel-lambacher-de-tls
 
     configMap:
+      identity_providers:
+        oidc:
+          enabled: true
+          cors:
+            endpoints:
+              - authorization
+              - token
+              - revocation
+              - introspection
+          clients:
+            - id: gitops
+              description: GitOps
+              sector_identifier: ''
+              public: false
+              authorization_policy: two_factor
+              pre_configured_consent_duration: ''
+              scopes:
+                - openid
+                - email
+                - profile
+              redirect_uris:
+                - https://gitops.masterloft.k8s.marcel-lambacher.de/oauth2/callback
+              grant_types:
+                - refresh_token
+                - authorization_code
+              response_types:
+                - code
+              response_modes:
+                - form_post
+                - query
+                - fragment
+              userinfo_signing_algorithm: none
+
       session:
         redis:
           enabled: false

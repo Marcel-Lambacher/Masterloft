@@ -7,3 +7,4 @@ resources:
   - authelia-users-database.yaml
   - sealed-authelia-secrets.json
   - middleware.yaml
+  - sealed-authelia-values.json
