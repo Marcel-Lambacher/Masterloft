@@ -8,6 +8,7 @@ resources:
 - vaultwarden
 - authelia
 - database
+- velero
 # - nextcloud
 # - adguard
 # - authentik
