@@ -1,8 +1,0 @@
----
-apiVersion: v1
-data:
-  adguard-basic-auth: bXktdXNlcm5hbWU6JGFwcjEkdXpCZjJ3OFgkbFFvZi5qOUdYenFsU0dQMHdwdlE4LwptYXJsYW06JGFwcjEkMFhtVC5EWFkkckQ1R0lVWlFETnQ5SWtXYXJtOVFxLgo=
-kind: Secret
-metadata:
-  name: adguard-basic-auth
-  namespace: adguard

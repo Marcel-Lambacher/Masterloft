@@ -10,5 +10,4 @@ resources:
 - database
 - velero
 # - nextcloud
-# - adguard
-# - authentik
+- adguard

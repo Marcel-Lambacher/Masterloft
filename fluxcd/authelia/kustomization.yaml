@@ -4,3 +4,6 @@ namespace: authelia
 resources:
   - namespace.yaml
   - release.yaml
+  - authelia-users-database.yaml
+  - sealed-authelia-secrets.json
+  - middleware.yaml

@@ -27,7 +27,6 @@ spec:
     disableWait: false
     force: true
 
-
   valuesFrom:
     - kind: Secret
       name: mariadb-initdb-secret

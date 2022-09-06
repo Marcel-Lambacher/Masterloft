@@ -11,7 +11,11 @@ spec:
           enabled: true
       web:
         redirectTo: websecure
-        
+
+    providers:
+      kubernetesCRD:
+        allowCrossNamespace: true
+
     # volumes:
     #   - name: masterloft-k8s-marcel-lambacher-de-tls
     #     mountPath: /certs

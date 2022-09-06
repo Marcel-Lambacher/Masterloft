@@ -28,6 +28,24 @@ spec:
     force: true
 
   values:
+    persistence:
+      enabled: true
+      storageClass: "local-path-ssd-auto-backup"
+
+    secret:
+      existingSecret: "authelia-secrets"
+
+    pod:
+      extraVolumeMounts:
+      - name: authelia-users-database
+        mountPath: "/config/users_database.yml"
+        subPath: users_database.yml
+
+      extraVolumes:
+        - name: authelia-users-database
+          secret:
+            secretName: authelia-users-database
+
     domain: masterloft.k8s.marcel-lambacher.de
 
     ingress:
@@ -53,15 +71,23 @@ spec:
         file:
           enabled: true
           password:
-            algorithm: sha512
-            iterations: 100000
+            algorithm: argon2id
+            iterations: 1
+            key_length: 32
+            salt_length: 16
+            memory: 1024
+            parallelism: 8
 
       storage:
         local:
-          enabled: true
+          enabled: false
 
         postgres:
           enabled: false
+
+        mysql:
+          enabled: true
+          host: mariadb.database.svc.cluster.local
 
       notifier:
         filesystem:

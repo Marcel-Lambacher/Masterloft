@@ -4,5 +4,3 @@ namespace: adguard
 resources:
   - namespace.yaml
   - release.yaml
-  - adguard-basic-auth.yaml
-  - basic-auth-middleware.yaml
