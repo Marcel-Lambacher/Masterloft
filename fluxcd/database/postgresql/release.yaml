@@ -7,18 +7,44 @@ spec:
   releaseName: postgresql
   chart:
     spec:
-      chart: bitnami/postgresql
-      version: 14.5.0
+      chart: postgresql
+      version: 11.8.1
       sourceRef:
         kind: HelmRepository
         name: bitnami
         namespace: flux-system
+
   interval: 30s
+  timeout: 3m0s
+
+  install:
+    timeout: 3m0s
+    disableWait: false
+    replace: true
+
+  upgrade:
+    timeout: 3m0s
+    disableWait: false
+    force: true
+
   values:
+    auth:
+      database: marlam
+      username: marlamm
+      existingSecret: "postgresql"
+      secretKeys:
+        adminPasswordKey: postgresPassword
+        userPasswordKey: postgresPassword
+        replicationPasswordKey: postgresPassword
+
     global:
       storageClass: local-path-ssd-auto-backup
-      auth:
-        existingSecret: postgresql-secrets
-      postgresqlorageClass:
+      postgresql:
+        postgresqlDatabase: marlam
+        postgresqlUsername: marlam
         auth:
-          username: marlam
+          existingSecret: "postgresql"
+          secretKeys:
+            adminPasswordKey: postgres-password
+            userPasswordKey: postgres-password
+            replicationPasswordKey: postgres-password

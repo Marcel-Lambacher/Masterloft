@@ -4,3 +4,4 @@ namespace: database
 resources:
   - release.yaml
   - sealed-postgresql-secret.json
+  - secret.yaml
