@@ -7,7 +7,7 @@ spec:
   releaseName: postgresql
   chart:
     spec:
-      chart: postgresql
+      chart: bitnami/postgresql
       version: 14.5.0
       sourceRef:
         kind: HelmRepository
