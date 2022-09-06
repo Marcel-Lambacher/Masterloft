@@ -1,0 +1,23 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: gitops
+  namespace: gitops
+spec:
+  releaseName: gitops
+  chart:
+    spec:
+      chart: weave-gitops
+      sourceRef:
+        kind: HelmRepository
+        name: gitops
+        namespace: flux-system
+  interval: 30s
+  install:
+    remediation:
+      retries: 3
+  values:
+    adminUser:
+      create: true
+      username: marlam
+      passwordHash: $2a$12$l4Nh5y0ALUWRdI0hN8fFieEPiBiAaC1wzSsteTg6rIfCYx7a6Te5m

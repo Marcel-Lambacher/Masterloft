@@ -1,0 +1,56 @@
+---
+
+- name: Check if flux app exists
+  become: true
+  stat:
+    path: '/usr/local/bin/flux'
+  changed_when: false
+  register: flux_binary
+
+- when: not flux_binary.stat.exists
+  block:
+    - name: Download the archive file.
+      become: true
+      become_user: root
+      get_url:
+        url: 'https://github.com/fluxcd/flux2/releases/download/v{{ flux_version }}/flux_{{ flux_version }}_linux_amd64.tar.gz'
+        dest: /tmp/flux_{{ flux_version }}_linux_amd64.tar.gz
+        checksum: '{{ flux_checksum }}'
+        mode: 0644
+
+    - name: Create flux app directory
+      become: true
+      become_user: root
+      file:
+        path: '/usr/local/bin/flux_{{ flux_version }}_linux_amd64'
+        state: directory
+        mode: 0755
+
+    - name: Unarchive flux
+      become: true
+      unarchive:
+        remote_src: true
+        src: /tmp/flux_{{ flux_version }}_linux_amd64.tar.gz
+        dest: '/usr/local/bin/flux_{{ flux_version }}_linux_amd64'
+        creates: '/usr/local/bin/flux_{{ flux_version }}_linux_amd64/flux'
+
+  always:
+    - name: Remove flux archive
+      become: true
+      become_user: root
+      file:
+        path: /tmp/flux_{{ flux_version }}_linux_amd64.tar.gz
+        state: absent
+
+- name: Make a link to the flux executable
+  file:
+    src: '/usr/local/bin/flux_{{ flux_version }}_linux_amd64/flux'
+    dest: '/usr/local/bin/flux'
+    state: link
+  become: true
+  become_user: root
+
+- name: Bootstrap flux
+  become: true
+  become_user: "{{ ssh_username }}"
+  command: "flux bootstrap git --url={{ flux_github_repository }} --username={{ flux_github_username }} --password={{ flux_github_token }} --token-auth=true --path=fluxcd"

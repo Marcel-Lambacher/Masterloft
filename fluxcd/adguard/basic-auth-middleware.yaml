@@ -1,0 +1,10 @@
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: adguard-basic-auth
+  namespace: adguard
+spec:
+  basicAuth:
+    removeHeader: true
+    secret: adguard-basic-auth

@@ -1,0 +1,3 @@
+name: masterloft.tunnel
+runtime: nodejs
+description: Public wireguard tunnel for the masterloft cluster

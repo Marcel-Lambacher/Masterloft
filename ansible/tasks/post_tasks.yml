@@ -1,0 +1,12 @@
+---
+
+- name: "[POST] Lock SSH key"
+  command: ssh-add -d /tmp/masterloft.cluster
+  delegate_to: 127.0.0.1
+  become: no
+  changed_when: no
+
+- name: "[POST] Delete temporary SSH key"
+  file:
+    path: /tmp/masterloft.cluster
+    state: absent

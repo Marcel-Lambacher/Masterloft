@@ -1,0 +1,9 @@
+[Interface]
+PrivateKey = {{ wireguard_private_key }}
+Address = 192.168.4.2
+
+[Peer]
+PublicKey = hp+mmgHz6ulygC8X+YFalH0hgUd93hM1LsclKVT+9W8=
+Endpoint = {{ wireguard_endpoint }}
+AllowedIPs = 192.168.4.1/32
+PersistentKeepalive = 25

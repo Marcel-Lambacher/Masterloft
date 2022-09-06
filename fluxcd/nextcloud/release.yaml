@@ -1,0 +1,90 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: nextcloud
+  namespace: nextcloud
+spec:
+  releaseName: nextcloud
+  chart:
+    spec:
+      chart: nextcloud
+      version: 3.1.0
+      sourceRef:
+        kind: HelmRepository
+        name: nextcloud
+        namespace: flux-system
+
+  interval: 30s
+  timeout: 3m0s
+
+  install:
+    timeout: 30m0s
+    disableWait: false
+    replace: true
+
+  upgrade:
+    timeout: 30m0s
+    disableWait: false
+    force: true
+
+  values:
+    image:
+      # tag: 24.0.4-fpm
+      tag: 23.0.8-fpm-alpine
+
+    startupProbe:
+      enabled: true
+      failureThreshold: 90
+
+    # ingress:
+    #   enabled: true
+    #   annotations:
+    #     kubernetes.io/ingress.class: traefik
+    #     cert-manager.io/cluster-issuer: letsencrypt-prod
+    #       - "traefik.enable=true"
+    #       - "traefik.http.routers.nextcloud.middlewares=nextcloud-dav,secHeaders@file"
+    #       - "traefik.http.middlewares.nextcloud-dav.replacepathregex.regex=^/.well-known/ca(l|rd)dav"
+    #       - "traefik.http.middlewares.nextcloud-dav.replacepathregex.replacement=/remote.php/dav/"
+    #   tls:
+    #   - hosts:
+    #     - nextcloud.masterloft.k8s.marcel-lambacher.de
+    #     secretName: masterloft-k8s-marcel-lambacher-de-tls
+
+    nginx:
+      ## You need to set an fpm version of the image for nextcloud if you want to use nginx!
+      enabled: true
+
+    # phpClientHttpsFix:
+    #   enabled: true
+    #   protocol: https
+
+    # nextcloud:
+    #   configs:
+    #     custom.config.php: |-
+    #       <?php
+    #       $CONFIG = array (
+    #         'trused_proxies' => ['10.42.0.0/16'],
+    #         'overwritehost' => 'https://nextcloud.masterloft.k8s.marcel-lambacher.de',
+    #         'overwriteprotocol' => 'https',
+    #         'overwrite.cli.url' => 'https://nextcloud.masterloft.k8s.marcel-lambacher.de',
+    #         'filelocking.enabled' => 'true',
+    #         'loglevel' => '2',
+    #         'trusted_domains' =>
+    #           [
+    #             'nextcloud',
+    #             'nextcloud.masterloft.k8s.marcel-lambacher.de'
+    #           ]
+    #       );
+
+    #   host: nextcloud.masterloft.k8s.marcel-lambacher.de
+    #   existingSecret:
+    #     enabled: true
+    #     secretName: nextcloud
+    #     usernameKey: nextcloud-username
+    #     passwordKey: nextcloud-password
+    #     tokenKey: nextcloud-token
+
+    # persistence:
+    #   enabled: yes
+    #   storageClass: local-path-ssd-auto-backup 
+    #   size: 1Gi

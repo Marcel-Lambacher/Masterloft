@@ -1,0 +1,28 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+  name: gitops-ingress
+  namespace: gitops
+spec:
+  rules:
+  - host: gitops.masterloft.k8s.marcel-lambacher.de
+    http:
+      paths:
+      - backend:
+          service:
+            name: gitops-weave-gitops
+            port:
+              number: 9001
+        path: /
+        pathType: Prefix
+  tls:
+  - hosts:
+    - gitops.masterloft.k8s.marcel-lambacher.de
+    secretName: masterloft-k8s-marcel-lambacher-de-tls
+
+status:
+  loadBalancer: {}

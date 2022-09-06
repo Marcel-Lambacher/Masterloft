@@ -1,0 +1,16 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: GitRepository
+metadata:
+  name: goauthentik
+  namespace: flux-system
+spec:
+  interval: 60m
+  url: https://github.com/goauthentik/helm
+  ref:
+    tag: authentik-2022.8.3
+  ignore: |
+    # exclude all
+    /*
+    # include charts directory
+    !/charts/authentik/

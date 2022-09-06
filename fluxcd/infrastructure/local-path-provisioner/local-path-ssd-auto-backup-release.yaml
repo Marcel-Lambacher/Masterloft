@@ -1,0 +1,45 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: local-path-ssd-auto-backup
+  namespace: local-path-provisioner
+spec:
+  releaseName: local-path-ssd-auto-backup
+  chart:
+    spec:
+      chart: deploy/chart/local-path-provisioner
+      version: 5.3.2
+      sourceRef:
+        kind: GitRepository
+        name: local-path-provisioner
+        namespace: flux-system
+
+  interval: 60m
+  timeout: 3m0s
+
+  install:
+    timeout: 3m0s
+    disableWait: false
+    replace: true
+    remediation:
+      retries: 5
+
+  upgrade:
+    timeout: 3m0s
+    disableWait: false
+    force: true
+    remediation:
+      retries: 5
+
+  values:
+    configmap:
+      name: local-path-ssd-auto-backup-config
+
+    storageClass:
+      name: local-path-ssd-auto-backup
+
+    nodePathMap:
+      - node: DEFAULT_PATH_FOR_NON_LISTED_NODES
+        paths:
+          - /opt/k3s/local-path-provisioner/local-path-ssd-auto-backup
+
