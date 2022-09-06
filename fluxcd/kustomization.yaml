@@ -6,7 +6,8 @@ resources:
 - podinfo
 - gitops
 - vaultwarden
-- authelia 
+- authelia
+- database
 # - nextcloud
 # - adguard
 # - authentik
