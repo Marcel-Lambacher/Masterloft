@@ -46,7 +46,7 @@ spec:
         kubernetes.io/ingress.class: traefik
         cert-manager.io/cluster-issuer: letsencrypt-prod
       hosts:
-        - host: authentik.masterloft.marcel-lambacher.de
+        - host: authentik.k8s.masterloft.marcel-lambacher.de
           paths:
             - path: "/"
               pathType: Prefix
