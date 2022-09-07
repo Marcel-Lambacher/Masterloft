@@ -1,0 +1,28 @@
+{
+    "kind": "SealedSecret",
+    "apiVersion": "bitnami.com/v1alpha1",
+    "metadata": {
+      "name": "authentik-values",
+      "namespace": "database",
+      "creationTimestamp": null,
+      "annotations": {
+        "sealedsecrets.bitnami.com/cluster-wide": "true"
+      }
+    },
+    "spec": {
+      "template": {
+        "metadata": {
+          "name": "authentik-values",
+          "namespace": "database",
+          "creationTimestamp": null,
+          "annotations": {
+            "sealedsecrets.bitnami.com/cluster-wide": "true"
+          }
+        },
+        "data": null
+      },
+      "encryptedData": {
+        "values.yaml": "AgBXZDYN/y1HQgpOFo/2fd15Ho5yvGjq/E47+K2w2yqxyBKoWaIIxhozTNuXPwT307WzzfbyrIwVZvi89U3d//XyrmYKiOv8S42oF6Ndv6R11UMMzW/jpwR3KgydygVYQ/3/zoyDrsqrNWZ94Z4g3v48ZXUY1V1l1aolXNZNHS4UNBedc/oySM5k2K5VBaDfgH7dblPe7+1+EeFFBlkcINwLNechdzQlr6vMEQ6iU2lsdZcCIEuB2/nKQjJviKadvMfRAthYGVSxHjE/jGq665hKT+pffhwMA+RKK5w/ybGYjdFj7S3Vvh1BBY9x1OQVbNAyMp4v+yrVvx85zc56PWEAkLjBCeIPGffMdqiqJUzT6LqxUQvKdcVKLY5KgWdUPXr2wkibCFEXh7+JPPsAcEqbpFjq6SAvQrZ/tlBw0Y0f4mI84VXA2sQ/Ac0yE/+HLp2umBhGOGM2B9wUt7HTIvx1rJ07CqRFD7UbXSDOV7gQQUOHBSON8nyw6C5UMGf6Ex5ryQhkyXtbsHNv4isPiy6ki3l0YbvWHFW2A5ner7fMuHUsZLsMN4kPPhMbCmkFWwfKxEb0Rhj5hWQNSYBT00q5EOCsXHrcuT8MkfURhrFhD7hJ5SWftWHg3+bQof+IySUHfStkZJFp5ymFOlfZgtAuXTeW9uATZESEt/632A9hP3ULKBBeBPhoH7EptvKWKF0NCzo6CyNuXiw50wDSCWEHn7BQrIo1vIwYKW+yL4swA5Qu5qsD0/Qd5BBTWXIrXQWW8Aj5xgeFgKoyado3wE1X0jcCvs+xBUSsmZcx7P/B7jk2248Kh30Hbmkhj8dBnCqP4JDUdlWuDk9MfTCCszshwSURuZTecTi0pDEIWKagbEKybjG/P3DlT+Z8"
+      }
+    }
+  }

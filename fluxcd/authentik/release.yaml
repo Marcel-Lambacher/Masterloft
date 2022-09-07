@@ -1,0 +1,63 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: authentik
+  namespace: authentik
+spec:
+  releaseName: authentik
+  chart:
+    spec:
+      chart: authentik
+      version: 2022.8.3
+      sourceRef:
+        kind: HelmRepository
+        name: goauthentik
+        namespace: flux-system
+
+  interval: 30s
+  timeout: 3m0s
+
+  install:
+    timeout: 3m0s
+    disableWait: false
+    replace: true
+
+  upgrade:
+    timeout: 3m0s
+    disableWait: false
+    force: true
+
+  valuesFrom:
+    - kind: Secret
+      name: authentik-values
+
+  values:
+    authentik:
+      # This sends anonymous usage-data, stack traces on errors and
+      # performance data to sentry.beryju.org, and is fully opt-in
+      error_reporting:
+        enabled: true
+      postgresql:
+        host: postgresql.database.svc.cluster.local
+
+    ingress:
+      enabled: true
+      annotations:
+        kubernetes.io/ingress.class: traefik
+        cert-manager.io/cluster-issuer: letsencrypt-prod
+      hosts:
+        - host: authentik.masterloft.marcel-lambacher.de
+          paths:
+            - path: "/"
+              pathType: Prefix
+
+      tls:
+      - hosts:
+        - authentik.masterloft.k8s.marcel-lambacher.de
+        secretName: masterloft-k8s-marcel-lambacher-de-tls
+
+    postgresql:
+      enabled: false
+
+    redis:
+      enabled: true
