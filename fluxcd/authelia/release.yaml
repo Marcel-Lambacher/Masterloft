@@ -74,7 +74,7 @@ spec:
               - revocation
               - introspection
           clients:
-            - id: gitops
+            - id: cf9ff4de45354bcd8fc8f83c1fb932f9
               description: GitOps
               sector_identifier: ''
               public: false
