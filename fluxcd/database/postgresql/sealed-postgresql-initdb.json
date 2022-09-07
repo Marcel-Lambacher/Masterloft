@@ -1,0 +1,28 @@
+{
+    "kind": "SealedSecret",
+    "apiVersion": "bitnami.com/v1alpha1",
+    "metadata": {
+      "name": "postgresql-initdb",
+      "namespace": "database",
+      "creationTimestamp": null,
+      "annotations": {
+        "sealedsecrets.bitnami.com/cluster-wide": "true"
+      }
+    },
+    "spec": {
+      "template": {
+        "metadata": {
+          "name": "postgresql-initdb",
+          "namespace": "database",
+          "creationTimestamp": null,
+          "annotations": {
+            "sealedsecrets.bitnami.com/cluster-wide": "true"
+          }
+        },
+        "data": null
+      },
+      "encryptedData": {
+        "init.sql": "AgCx/JdQtJC4YvPlO10iS3RrLdWbaVbu2Hg2rRIVXRzXvk1UWVOnrII6/2gXrgFxuPyhJPhPttqMxEuOsiztgTTTegU776uZ5lPxAmVdScNmDw857LLLloNaJ1p4tbcIDXfkzyYA1+EJGjrd2f/jCQ79w/vPYPB+nAiTtT6A+sVMXezX5GN9thvv6YfAQwek+gqjlwRaC1d0Jef8fyqAvaAx3viRrrKpeLU0BO4e0pKdUIQYm8RRFfcXp9YSoNfJpdwMWQApT7r2l39fuNh1djy3Gmc7fFqQvz+lFGPxaG28+c3SPXYeQ9um5ZPJJPnnOiCWVKoJUhNnWsNM/wjQzhdqNKKwP5LUDL+LaqhTcDsu8YZURc9XQGkG+3HTVDJ3o3xu9UD6uMjoWnUu/+OdPQhRTVxVTVAR8AwHxHUY9xFJ0tWdD79M1le4ZVYjDqHxjBk0zTnl7lfKVrZaPymCiBQbicTLYMHUdPe3TrKwTS2PfI/rUWuY/zRTo+i62MsxM4Dx+gv2UZyO6OMkTUTEQchdrmkyjZNx7HUcxM02/2eqCiRb0MNTziX6Q/nsG3ADc2qITMqtJB4BVjnUd/9/TM4Dh8fYxnPL/h1g2jiNELhfqkARypJmn742TDm88n5ZN6N4UMAPk5GPgm+adl67AjNH+xK9XutiAalxa2LpWi0nGBsWbWZa+ojGOME6AsrFtprWRlJih2QPmTJ50S+ZPdpdcmA3w3XkN8xBMpd9lL4dBO2+WK1xjbFW29h1oPYmkOzGqb//+d2V0iqtLwyw+EWSc8g4zQFRrwoXj9wMu9a5UB5ayGmVKdRUDgJ9s45l0BSewQKLqZK4eWUTciRLI1IDHEZqBGOB4LOoJjYydaVcg/2qlHffLzGOM5ajQixqOK6QZvv7j6C2qBoLUrS9jHviiPGXhg=="
+      }
+    }
+  }

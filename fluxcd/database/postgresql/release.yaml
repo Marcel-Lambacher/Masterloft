@@ -32,6 +32,16 @@ spec:
       name: mariadb-initdb-secret
 
   values:
+    primary:
+      extraVolumeMounts:
+        - name: postgresql-initdb
+          mountPath: /docker-entrypoint-initdb.d/
+
+      extraVolumes :
+        - name: postgresql-initdb
+          secret:
+            secretName: postgresql-initdb
+            
     auth:
       enablePostgresUser: true
     global:
