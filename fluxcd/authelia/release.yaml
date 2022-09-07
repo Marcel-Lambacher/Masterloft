@@ -66,6 +66,7 @@ spec:
     configMap:
       identity_providers:
         oidc:
+          enable_client_debug_messages: true
           enabled: true
           cors:
             endpoints:
@@ -87,11 +88,12 @@ spec:
                 - profile
               redirect_uris:
                 - https://gitops.masterloft.k8s.marcel-lambacher.de/oauth2/callback
-              grant_types:
-                - refresh_token
-                - authorization_code
-              response_types:
-                - code
+                - https://openidconnect.net/callback
+              # grant_types:
+              #   - refresh_token
+              #   - authorization_code
+              # response_types:
+              #   - code
               response_modes:
                 - form_post
                 - query

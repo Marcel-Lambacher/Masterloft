@@ -18,6 +18,8 @@ spec:
     remediation:
       retries: 3
   values:
+    env:
+      SEAFILE_SERVER_HOSTNAME: seafile.masterloft.k8s.marcel-lambacher.de
     ingress:
       main:
         enabled: true
