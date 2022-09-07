@@ -25,7 +25,7 @@ spec:
     oidcSecret:
       create: true
       clientID: gitops
-      issuerURL: https://auth.masterloft.k8s.marcel-lambacher.de/
+      issuerURL: https://auth.masterloft.k8s.marcel-lambacher.de
       redirectURL: https://gitops.masterloft.k8s.marcel-lambacher.de/oauth2/callback
     adminUser:
       create: true
