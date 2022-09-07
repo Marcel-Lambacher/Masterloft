@@ -34,3 +34,4 @@ velero_azure_backup_account_name: stmasterloftveleroprod
 velero_azure_backup_account_key:  "{{ vault_velero_azure_backup_account_key }}"
 velero_azure_backup_account_resource_group: rg-masterloftvelero-prod-euwe
 velero_azure_backup_account_subscription: ad7f6fb8-0230-4eb2-b5a1-e81059b30279
+velero_last_backup_name: disaster-test-07-09-2022

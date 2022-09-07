@@ -7,8 +7,8 @@ resources:
 - gitops
 - vaultwarden
 - authelia
-- authentik
+# - authentik
 - database
 - velero
 # - nextcloud
-- adguard
+# - adguard
