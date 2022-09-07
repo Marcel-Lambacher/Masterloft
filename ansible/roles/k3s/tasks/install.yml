@@ -18,6 +18,15 @@
     group: root
     mode: 0755
 
+- name: Install apparmor userland
+  ansible.builtin.apt:
+    name: apparmor
+    update_cache: yes
+
+- name: Install apparmor userland
+  ansible.builtin.apt:
+    name: apparmor-utils
+
 - name: Enable and check K3s service
   systemd:
     name: k3s

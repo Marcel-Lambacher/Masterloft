@@ -83,6 +83,7 @@ spec:
               scopes:
                 - openid
                 - email
+                - groups
                 - profile
               redirect_uris:
                 - https://gitops.masterloft.k8s.marcel-lambacher.de/oauth2/callback

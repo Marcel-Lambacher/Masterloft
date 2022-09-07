@@ -65,7 +65,6 @@
       command: |
         velero restore create --from-backup {{ velero_last_backup_name }}
 
-
   always:
     - name: Remove velero archive
       become: true
