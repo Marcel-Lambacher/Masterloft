@@ -1,10 +1,10 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: vaultwarden-new
-  namespace: vaultwarden-new
+  name: nzbget
+  namespace: media
 spec:
-  releaseName: vaultwarden-new
+  releaseName: nzbget
   chart:
     spec:
       # chart: onechart 
@@ -19,6 +19,7 @@ spec:
         kind: GitRepository
         name: local-path-provisioner
         namespace: flux-system
+
 
   interval: 30s
   timeout: 3m0s
@@ -38,22 +39,22 @@ spec:
       ignore: true
 
     image:
-      repository: vaultwarden/server
-      tag: latest
+      repository: linuxserver/nzbget
+      tag: 21.1.20220908
 
     ingress:
       annotations:
         kubernetes.io/ingress.class: traefik
         cert-manager.io/cluster-issuer: letsencrypt-prod
-      host: vaultwarden-new.masterloft.k8s.marcel-lambacher.de
+      host: nzbget.masterloft.k8s.marcel-lambacher.de
       tlsEnabled: true
 
     replicas: 1
 
-    containerPort: 80
+    containerPort: 6789
 
     probe:
-      enabled: true
+      enabled: false
       path: "/"
       settings:
         initialDelaySeconds: 0
@@ -63,7 +64,7 @@ spec:
         failureThreshold: 3
 
     livenessProbe:
-      enabled: true
+      enabled: false
       path: "/"
       settings:
         initialDelaySeconds: 0
@@ -72,8 +73,19 @@ spec:
         timeoutSeconds: 3
         failureThreshold: 3
 
+    vars:
+      NZBGET_USER: marlam
+
+    sealedSecrets:
+      NZBGET_PASS: AgAeZ1yBG8NNnhBKiplycGXOdQSj8WQI86P9gdBevpr93UE4CM35NwPbjV8OHGu34C9951CRHt4WGVa6P6m5kH7sMPWl6fxt/NWvqDJaooJTl0/t9vPe4Sm5Y51E1LOpGiWTKiVVL8jhe6CYv2UG4RsGBRCq+84vxKiir32/M1fPOD+IqbDwtFG/z7pig/TAS304+QUpRJ0yremCoYI6zyDAla8SGxYMik3hBb1+wodXieLPaOP/0c8gsNJd/fyRVWguy5stP2c1QVrpYzk+oOe3X7WadAzR9EJgcXBrlbSOTbUp6qxURG0jV+DtUvnBSA+398NhwbgbR+01DzREXEKuJtr1MemBfTbeqnrHN+j/VFiFGzrRw3/kkECuwypKVnhZ2OfccHPa0R2Nph6qy3rc2nug4q4AqaZzDNMw8yx4CW6m1fRM9cHo83cmqvQQ7eK3ofa3nq9Y2C4VpNcH9MsDcaniop8lrlLg/15f479XcpwghF3wqfzx7T4yZ4drdYaE+Z5/A5X84QpVLFtUvZUGyJD3VtXhJPvdB22aZ10nlbo0/P6BWN7XtWHKj793Xgfih7P6UUd3KogBDnlCssK2Pnjx1tUcmo9ZqnwfykgI70i9wDHRL9ue/0NBZDC6CKCS2r1mIPGbd6HCCUN9Ked088qd1BTN9limHCw738+wGvLevY8j6qJy8prR1oDaqWMptRl8+YsDyv+AqNLU
+
     volumes:
-      - name: data
-        path: /data
+      - name: downloads
+        path: /downloads
+        size: 1Gi
+        storageClass: local-path-ssd-auto-backup
+
+      - name: config
+        path: /config
         size: 1Gi
         storageClass: local-path-ssd-auto-backup
