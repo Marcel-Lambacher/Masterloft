@@ -7,9 +7,6 @@ resources:
 - gitops
 - vaultwarden
 - authelia
-# - authentik
 - database
 - velero
-# - nextcloud
-- seafile
-# - adguard
+- adguard

@@ -7,7 +7,5 @@ resources:
   - jetstack.yaml
   - k8s-at-home.yaml
   - gitops.yaml
-  - nextcloud.yaml
   - local-path-provisioner.yaml
-  - goauthentik.yaml
   - authelia.yaml
