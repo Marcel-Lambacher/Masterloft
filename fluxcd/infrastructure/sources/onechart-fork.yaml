@@ -8,4 +8,5 @@ spec:
   interval: 60m
   url: https://github.com/Marcel-Lambacher/onechart
   ref:
-    branch: feature/make-resource-configuration-optional
+    # branch: feature/make-resource-configuration-optional
+    branch: feature/enable-sealed-file-secrets

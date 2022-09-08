@@ -3,3 +3,4 @@ kind: Kustomization
 namespace: media
 resources:
   - release.yaml
+  - sealed-nzbget-config.json
