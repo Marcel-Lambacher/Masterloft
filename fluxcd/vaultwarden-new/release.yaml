@@ -17,7 +17,7 @@ spec:
       version: 0.41.0
       sourceRef:
         kind: GitRepository
-        name: local-path-provisioner
+        name: onechart-fork
         namespace: flux-system
 
   interval: 30s
