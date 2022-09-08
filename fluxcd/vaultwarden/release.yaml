@@ -7,46 +7,73 @@ spec:
   releaseName: vaultwarden
   chart:
     spec:
-      chart: vaultwarden
-      version: 5.3.2
+      # chart: onechart 
+      # version: 0.40.0
+      # sourceRef:
+      #   kind: HelmRepository
+      #   name: onechart
+      #   namespace: flux-system
+      chart: charts/onechart
+      version: 0.41.0
       sourceRef:
-        kind: HelmRepository
-        name: k8s-at-home
+        kind: GitRepository
+        name: onechart-fork
         namespace: flux-system
+
   interval: 30s
+  timeout: 3m0s
+
   install:
-    remediation:
-      retries: 3
+    timeout: 3m0s
+    disableWait: false
+    replace: true
+
+  upgrade:
+    timeout: 3m0s
+    disableWait: false
+    force: true
+
   values:
-    podAnnotations:
-      backup.velero.io/backup-volumes: config
-  
-    persistence:
-      config:
-        enabled: true
-        storageClass: local-path-ssd-auto-backup 
+    resources:
+      ignore: true
+
+    image:
+      repository: vaultwarden/server
+      tag: latest
 
     ingress:
-      main:
-        enabled: true
-        annotations:
-          kubernetes.io/ingress.class: traefik
-          cert-manager.io/cluster-issuer: letsencrypt-prod
-        hosts:
-          - host: vaultwarden.masterloft.k8s.marcel-lambacher.de
-            paths:
-              - path: /notifications/hub
-                pathType: Exact
-                service:
-                  name: vaultwarden
-                  port: 3012
-              - path: /
-                pathType: Prefix
-                service:
-                  name: vaultwarden
-                  port: 80
+      annotations:
+        kubernetes.io/ingress.class: traefik
+        cert-manager.io/cluster-issuer: letsencrypt-prod
+      host: vaultwarden.masterloft.k8s.marcel-lambacher.de
+      tlsEnabled: true
 
-        tls:
-        - hosts:
-          - vaultwarden.masterloft.k8s.marcel-lambacher.de
-          secretName: masterloft-k8s-marcel-lambacher-de-tls
+    replicas: 1
+
+    containerPort: 80
+
+    probe:
+      enabled: true
+      path: "/"
+      settings:
+        initialDelaySeconds: 0
+        periodSeconds: 10
+        successThreshold: 1
+        timeoutSeconds: 3
+        failureThreshold: 3
+
+    livenessProbe:
+      enabled: true
+      path: "/"
+      settings:
+        initialDelaySeconds: 0
+        periodSeconds: 10
+        successThreshold: 1
+        timeoutSeconds: 3
+        failureThreshold: 3
+
+    volumes:
+      - name: data
+        path: /data
+        size: 1Gi
+        storageClass: local-path-ssd-auto-backup
