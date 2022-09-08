@@ -9,3 +9,4 @@ resources:
   - gitops.yaml
   - local-path-provisioner.yaml
   - authelia.yaml
+  - onechart.yaml

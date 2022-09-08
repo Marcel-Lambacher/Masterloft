@@ -6,6 +6,7 @@ resources:
 - podinfo
 - gitops
 - vaultwarden
+- vaultwarden-new
 - authelia
 - database
 - velero
