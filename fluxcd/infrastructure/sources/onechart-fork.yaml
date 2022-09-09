@@ -5,8 +5,8 @@ metadata:
   name: onechart-fork
   namespace: flux-system
 spec:
-  interval: 60m
+  interval: 30s
   url: https://github.com/Marcel-Lambacher/onechart
   ref:
     # branch: feature/make-resource-configuration-optional
-    branch: feature/enable-sealed-file-secrets
+    branch: release/fork

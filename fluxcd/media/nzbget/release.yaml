@@ -14,7 +14,6 @@ spec:
       #   name: onechart
       #   namespace: flux-system
       chart: charts/onechart
-      version: 0.41.0
       sourceRef:
         kind: GitRepository
         name: onechart-fork
@@ -46,6 +45,7 @@ spec:
       annotations:
         kubernetes.io/ingress.class: traefik
         cert-manager.io/cluster-issuer: letsencrypt-prod
+        traefik.ingress.kubernetes.io/router.middlewares: authelia-forwardauth-authelia@kubernetescrd, media-nzgbet-add-basic-auth-prefix-middleware@kubernetescrd
       host: nzbget.masterloft.k8s.marcel-lambacher.de
       tlsEnabled: true
 
@@ -74,30 +74,17 @@ spec:
         failureThreshold: 3
 
     vars:
-      NZBGET_USER: marlam
-
-    sealedSecrets:
-      NZBGET_PASS: AgAeZ1yBG8NNnhBKiplycGXOdQSj8WQI86P9gdBevpr93UE4CM35NwPbjV8OHGu34C9951CRHt4WGVa6P6m5kH7sMPWl6fxt/NWvqDJaooJTl0/t9vPe4Sm5Y51E1LOpGiWTKiVVL8jhe6CYv2UG4RsGBRCq+84vxKiir32/M1fPOD+IqbDwtFG/z7pig/TAS304+QUpRJ0yremCoYI6zyDAla8SGxYMik3hBb1+wodXieLPaOP/0c8gsNJd/fyRVWguy5stP2c1QVrpYzk+oOe3X7WadAzR9EJgcXBrlbSOTbUp6qxURG0jV+DtUvnBSA+398NhwbgbR+01DzREXEKuJtr1MemBfTbeqnrHN+j/VFiFGzrRw3/kkECuwypKVnhZ2OfccHPa0R2Nph6qy3rc2nug4q4AqaZzDNMw8yx4CW6m1fRM9cHo83cmqvQQ7eK3ofa3nq9Y2C4VpNcH9MsDcaniop8lrlLg/15f479XcpwghF3wqfzx7T4yZ4drdYaE+Z5/A5X84QpVLFtUvZUGyJD3VtXhJPvdB22aZ10nlbo0/P6BWN7XtWHKj793Xgfih7P6UUd3KogBDnlCssK2Pnjx1tUcmo9ZqnwfykgI70i9wDHRL9ue/0NBZDC6CKCS2r1mIPGbd6HCCUN9Ked088qd1BTN9limHCw738+wGvLevY8j6qJy8prR1oDaqWMptRl8+YsDyv+AqNLU
+      # Disable basic authorization, since we're using authelia as an auth proxy
+      NZBGET_USER: 'basic'
+      NZBGET_PASS: 'auth'
 
     volumes:
-      # - name: downloads
-      #   path: /downloads
-      #   size: 1Gi
-      #   storageClass: local-path-ssd-auto-backup
-
       - name: downloads
         path: /downloads
         hostPath:
-          path: /mnt/nzbget-downloads
+          path: /data/downloads
 
-      # - name: config
-      #   path: /config
-      #   size: 1Gi
-      #   storageClass: local-path-ssd-auto-backup
-
-    sealedFileSecrets:
+    existingFileSecrets:
       - name: config
-        path: /config
-        filesToMount:
-          - name: nzbget.conf
-            sourcePath: sealed-nzbget-config.json
+        path: "/config/nzbget.conf"
+        subPath: nzbget.conf

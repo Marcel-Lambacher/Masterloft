@@ -4,3 +4,4 @@ namespace: media
 resources:
   - release.yaml
   - sealed-nzbget-config.json
+  - add-basic-auth-prefix-middleware.yaml

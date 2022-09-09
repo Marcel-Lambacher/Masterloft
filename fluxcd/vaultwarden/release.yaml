@@ -14,7 +14,6 @@ spec:
       #   name: onechart
       #   namespace: flux-system
       chart: charts/onechart
-      version: 0.41.0
       sourceRef:
         kind: GitRepository
         name: onechart-fork
