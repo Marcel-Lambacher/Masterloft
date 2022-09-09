@@ -77,12 +77,14 @@ spec:
       # Disable basic authorization, since we're using authelia as an auth proxy
       NZBGET_USER: 'basic'
       NZBGET_PASS: 'auth'
+      PUID: 1000
+      PGID: 1000
 
     volumes:
-      - name: downloads
-        path: /downloads
+      - name: data
+        path: /data
         hostPath:
-          path: /data/downloads
+          path: /data
 
     existingFileSecrets:
       - name: config

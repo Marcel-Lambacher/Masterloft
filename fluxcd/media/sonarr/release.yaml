@@ -34,6 +34,10 @@ spec:
     force: true
 
   values:
+    vars:
+      PUID: 1000
+      PGID: 1000
+
     resources:
       ignore: true
 
@@ -75,8 +79,13 @@ spec:
 
     volumes:
       - name: config
-        path: /confi
+        path: /config
         size: 1Gi
         storageClass: local-path-ssd-auto-backup
         pvcAnnotations: 
           helm.sh/resource-policy: keep
+
+      - name: data
+        path: /data
+        hostPath:
+          path: /data

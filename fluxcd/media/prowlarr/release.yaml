@@ -75,7 +75,7 @@ spec:
 
     volumes:
       - name: config
-        path: /confi
+        path: /config
         size: 1Gi
         storageClass: local-path-ssd-auto-backup
         pvcAnnotations: 
