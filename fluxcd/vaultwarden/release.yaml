@@ -76,3 +76,5 @@ spec:
         path: /data
         size: 1Gi
         storageClass: local-path-ssd-auto-backup
+        pvcAnnotations: 
+          helm.sh/resource-policy: keep

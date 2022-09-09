@@ -51,7 +51,7 @@ spec:
 
     replicas: 1
 
-    containerPort: 3.0.9 
+    containerPort: 8989
 
     probe:
       enabled: false
@@ -78,3 +78,5 @@ spec:
         path: /confi
         size: 1Gi
         storageClass: local-path-ssd-auto-backup
+        pvcAnnotations: 
+          helm.sh/resource-policy: keep
