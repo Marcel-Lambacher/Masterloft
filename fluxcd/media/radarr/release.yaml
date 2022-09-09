@@ -1,0 +1,80 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: radarr
+  namespace: media
+spec:
+  releaseName: radarr
+  chart:
+    spec:
+      # chart: onechart 
+      # version: 0.40.0
+      # sourceRef:
+      #   kind: HelmRepository
+      #   name: onechart
+      #   namespace: flux-system
+      chart: charts/onechart
+      sourceRef:
+        kind: GitRepository
+        name: onechart-fork
+        namespace: flux-system
+
+
+  interval: 30s
+  timeout: 3m0s
+
+  install:
+    timeout: 3m0s
+    disableWait: false
+    replace: true
+
+  upgrade:
+    timeout: 3m0s
+    disableWait: false
+    force: true
+
+  values:
+    resources:
+      ignore: true
+
+    image:
+      repository: linuxserver/radarr 
+      tag: 4.1.0
+
+    ingress:
+      annotations:
+        kubernetes.io/ingress.class: traefik
+        cert-manager.io/cluster-issuer: letsencrypt-prod
+        traefik.ingress.kubernetes.io/router.middlewares: authelia-forwardauth-authelia@kubernetescrd
+      host: radarr.masterloft.k8s.marcel-lambacher.de
+      tlsEnabled: true
+
+    replicas: 1
+
+    containerPort: 3.0.9 
+
+    probe:
+      enabled: false
+      path: "/"
+      settings:
+        initialDelaySeconds: 0
+        periodSeconds: 10
+        successThreshold: 1
+        timeoutSeconds: 3
+        failureThreshold: 3
+
+    livenessProbe:
+      enabled: false
+      path: "/"
+      settings:
+        initialDelaySeconds: 0
+        periodSeconds: 10
+        successThreshold: 1
+        timeoutSeconds: 3
+        failureThreshold: 3
+
+    volumes:
+      - name: config
+        path: /confi
+        size: 1Gi
+        storageClass: local-path-ssd-auto-backup
