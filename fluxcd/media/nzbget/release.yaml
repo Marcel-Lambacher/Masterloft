@@ -54,7 +54,7 @@ spec:
     containerPort: 6789
 
     probe:
-      enabled: false
+      enabled: true
       path: "/"
       settings:
         initialDelaySeconds: 0
@@ -64,7 +64,7 @@ spec:
         failureThreshold: 3
 
     livenessProbe:
-      enabled: false
+      enabled: true
       path: "/"
       settings:
         initialDelaySeconds: 0
