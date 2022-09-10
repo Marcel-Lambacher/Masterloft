@@ -56,7 +56,7 @@ spec:
       enabled: true
       annotations:
         kubernetes.io/ingress.class: traefik
-        cert-manager.io/cluster-issuer: letsencrypt-prod
+        # cert-manager.io/cluster-issuer: letsencrypt-prod
 
       subdomain: auth
 
