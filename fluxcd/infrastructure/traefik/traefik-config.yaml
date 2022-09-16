@@ -16,13 +16,13 @@ spec:
       kubernetesCRD:
         allowCrossNamespace: true
 
-    # volumes:
-    #   - name: masterloft-k8s-marcel-lambacher-de-tls
-    #     mountPath: /certs
-    #     type: secret
-    #   - name: traefik-dynamic-config
-    #     mountPath: /config
-    #     type: configMap
+    volumes:
+      - name: masterloft-k8s-marcel-lambacher-de-tls
+        mountPath: /certs
+        type: secret
+      - name: traefik-dynamic-config
+        mountPath: /config
+        type: configMap
 
-    # additionalArguments:
-    #   - --providers.file.filename=/config/dynamic.yaml    
+    additionalArguments:
+      - --providers.file.filename=/config/dynamic.yaml    

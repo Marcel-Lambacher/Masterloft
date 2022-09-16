@@ -10,14 +10,14 @@ spec:
     privateKeySecretRef:
       name: letsencrypt-staging
     solvers:
-    - http01:
-        ingress:
-          class: traefik
-      # - dns01:
-      #     digitalocean:
-      #       tokenSecretRef:
-      #         name: digitalocean-token-secret
-      #         key: digitalocean-token
-      #   selector:
-      #     dnsZones:
-      #       - "masterloft.k8s.marcel-lambacher.de"
+    # - http01:
+    #     ingress:
+    #       class: traefik
+      - dns01:
+          digitalocean:
+            tokenSecretRef:
+              name: digitalocean-token-secret
+              key: digitalocean-token
+        selector:
+          dnsZones:
+            - "masterloft.k8s.marcel-lambacher.de"

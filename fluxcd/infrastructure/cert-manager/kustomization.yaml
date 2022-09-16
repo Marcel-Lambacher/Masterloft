@@ -3,8 +3,8 @@ kind: Kustomization
 resources:
   - namespace.yaml
   - release.yaml
-  # - sealed-digitalocean-token-secret.json
+  - sealed-digitalocean-token-secret.json
   - issuer-letsencrypt-prod.yaml
-  # - cert-prod-masterloft-k8s-marcel-lambacher-de.yaml
-  - issuer-letsencrypt-staging.yaml
+  - cert-prod-masterloft-k8s-marcel-lambacher-de.yaml
+  # - issuer-letsencrypt-staging.yaml
   # - cert-staging-masterloft-k8s-marcel-lambacher-de.yaml
