@@ -10,7 +10,7 @@ resources:
 
 patchesStrategicMerge:
   - argocd-cmd-params-cm-patch.yaml
-  # - argocd-cm-patch.yaml
+  - argocd-cm-patch.yaml
   # - argocd-server-svc-patch.yaml
 
 namespace: argocd

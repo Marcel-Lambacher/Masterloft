@@ -3,11 +3,5 @@ kind: ConfigMap
 metadata:
   name: argocd-cm
 data:
-  configManagementPlugins: |
-    - name: kustomized-helm
-      init:
-        command: ["/bin/sh", "-c"]
-        args: ["helm dependency build || true"]
-      generate:
-        command: ["/bin/sh", "-c"]
-        args: ["helm template --release-name release-name . > all.yaml && kustomize build"]
+  # enables a kustomization option that can work with remote helm repos
+  kustomize.buildOptions: --enable-helm
