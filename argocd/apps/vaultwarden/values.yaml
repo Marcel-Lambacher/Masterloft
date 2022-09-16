@@ -1,0 +1,45 @@
+resources:
+  ignore: true
+
+image:
+  repository: vaultwarden/server
+  tag: latest
+
+ingress:
+  annotations:
+    kubernetes.io/ingress.class: traefik
+  host: vaultwardennew.masterloft.k8s.marcel-lambacher.de
+  # TLS is deactived in ingress, since default cert of traefik will take care of it (TLS per default)
+  tlsEnabled: false
+
+replicas: 1
+
+containerPort: 80
+
+probe:
+  enabled: true
+  path: "/"
+  settings:
+    initialDelaySeconds: 0
+    periodSeconds: 10
+    successThreshold: 1
+    timeoutSeconds: 3
+    failureThreshold: 3
+
+livenessProbe:
+  enabled: true
+  path: "/"
+  settings:
+    initialDelaySeconds: 0
+    periodSeconds: 10
+    successThreshold: 1
+    timeoutSeconds: 3
+    failureThreshold: 3
+
+volumes:
+  - name: data
+    path: /data
+    size: 1Gi
+    storageClass: local-path-ssd-auto-backup
+    pvcAnnotations: 
+      helm.sh/resource-policy: keep
