@@ -1,0 +1,28 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+  name: argocd-ui-ingress
+  namespace: argocd
+spec:
+  rules:
+  - host: argocd.masterloft.k8s.marcel-lambacher.de
+    http:
+      paths:
+      - backend:
+          service:
+            name: argocd-server
+            port:
+              name: http
+        path: /
+        pathType: Prefix
+  tls:
+  - hosts:
+    - argocd.masterloft.k8s.marcel-lambacher.de
+    secretName: masterloft-k8s-marcel-lambacher-de-tls
+
+status:
+  loadBalancer: {}

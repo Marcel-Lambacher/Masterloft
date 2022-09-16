@@ -1,8 +1,9 @@
 ---
 
-- include_tasks: install.yml
-- include_tasks: kubectl.yml
-- include_tasks: helm.yml
-- include_tasks: sealed-secrets.yml
-- include_tasks: velero.yml
-- include_tasks: flux.yml
+# - include_tasks: install.yml
+# - include_tasks: kubectl.yml
+# - include_tasks: helm.yml
+# - include_tasks: sealed-secrets.yml
+# - include_tasks: velero.yml
+# - include_tasks: flux.yml
+- include_tasks: argocd.yml
