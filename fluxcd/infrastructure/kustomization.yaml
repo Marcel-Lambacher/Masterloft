@@ -5,4 +5,4 @@ resources:
   - cert-manager
   - sealed-secrets
   - traefik
-  - local-path-provisioner
+  # - local-path-provisioner
