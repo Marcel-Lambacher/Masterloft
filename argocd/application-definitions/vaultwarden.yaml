@@ -14,8 +14,8 @@ spec:
     path: argocd/apps/vaultwarden
     repoURL: 'https://github.com/Marcel-Lambacher/Masterloft.git'
     targetRevision: HEAD
-    plugin:
-      name: kustomized-helm
+    # plugin:
+    #   name: kustomized-helm
   syncPolicy:
     automated:
       prune: true

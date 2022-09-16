@@ -6,11 +6,11 @@ resources:
 
 helmCharts:
 - name: onechart
-  includeCRDs: true
+  includeCRDs: false
   valuesInline:
     image:
       repository: vaultwarden/server
       tag: latest
-  releaseName: onechart
+  releaseName: vaultwardennew
   version: 0.46.0
   repo: https://marcel-lambacher.github.io/onechart
