@@ -1,0 +1,42 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: local-path-provisioner
+resources:
+  - namespace.yaml
+
+helmCharts:
+- name: local-path-provisioner
+  includeCRDs: false
+  # valuesMerge: merge
+  valuesInline:
+    configmap:
+      name: local-path-ssd-auto-backup-config
+
+    storageClass:
+      name: local-path-ssd-auto-backup
+
+    nodePathMap:
+      - node: DEFAULT_PATH_FOR_NON_LISTED_NODES
+        paths:
+          - /opt/k3s/local-path-provisioner/local-path-ssd-auto-backup
+  releaseName: local-path-ssd-auto-backup
+  version: 0.0.22
+  repo: https://charts.containeroo.ch
+
+- name: local-path-provisioner
+  includeCRDs: false
+  # valuesMerge: merge
+  valuesInline:
+    configmap:
+      name: local-path-ssd-no-backup-config
+
+    storageClass:
+      name: local-path-ssd-no-backup
+
+    nodePathMap:
+      - node: DEFAULT_PATH_FOR_NON_LISTED_NODES
+        paths:
+          - /opt/k3s/local-path-provisioner/local-path-ssd-no-backup
+  releaseName: local-path-ssd-no-backup
+  version: 0.0.22
+  repo: https://charts.containeroo.ch
