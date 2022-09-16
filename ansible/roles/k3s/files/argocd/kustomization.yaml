@@ -6,6 +6,7 @@ resources:
   # - argocd-initial-admin-secret.yaml
   - https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
   - ingress.yaml
+  - bootstrap-app.yaml
 
 patchesStrategicMerge:
   - argocd-cmd-params-cm-patch.yaml
