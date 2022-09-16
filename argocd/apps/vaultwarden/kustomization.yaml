@@ -3,3 +3,14 @@ kind: Kustomization
 namespace: vaultwardennew
 resources:
   - namespace.yaml
+
+helmCharts:
+- name: onechart
+  includeCRDs: true
+  valuesInline:
+    image:
+      repository: vaultwarden/server
+      tag: latest
+  releaseName: onechart
+  version: 0.46.0
+  repo: https://marcel-lambacher.github.io/onechart
