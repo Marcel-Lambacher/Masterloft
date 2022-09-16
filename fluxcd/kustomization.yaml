@@ -5,7 +5,7 @@ resources:
 - infrastructure
 - podinfo
 - gitops
-- vaultwarden
+# - vaultwarden
 - authelia
 - database
 - velero
