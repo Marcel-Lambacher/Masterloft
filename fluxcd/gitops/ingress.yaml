@@ -18,9 +18,10 @@ spec:
               number: 9001
         path: /
         pathType: Prefix
-  tls:
-  - hosts:
-    - gitops.masterloft.k8s.marcel-lambacher.de
+  # TLS is deactived in ingress, since default cert of traefik will take care of it (TLS per default)
+  # tls:
+  # - hosts:
+  #   - gitops.masterloft.k8s.marcel-lambacher.de
 
 status:
   loadBalancer: {}

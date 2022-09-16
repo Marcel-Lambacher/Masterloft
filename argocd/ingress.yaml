@@ -19,10 +19,11 @@ spec:
               name: http
         path: /
         pathType: Prefix
-  tls:
-  - hosts:
-    - argocd.masterloft.k8s.marcel-lambacher.de
-    secretName: masterloft-k8s-marcel-lambacher-de-tls
+  # TLS is deactived in ingress, since default cert of traefik will take care of it (TLS per default)
+  # tls:
+  # - hosts:
+  #   - argocd.masterloft.k8s.marcel-lambacher.de
+  #   secretName: masterloft-k8s-marcel-lambacher-de-tls
 
 status:
   loadBalancer: {}

@@ -19,9 +19,10 @@ spec:
               number: 9898
         path: /
         pathType: Prefix
-  tls:
-  - hosts:
-    - podinfo.masterloft.k8s.marcel-lambacher.de
+  # TLS is deactived in ingress, since default cert of traefik will take care of it (TLS per default)
+  # tls:
+  # - hosts:
+  #   - podinfo.masterloft.k8s.marcel-lambacher.de
     
 status:
   loadBalancer: {}
