@@ -1,0 +1,17 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: cert-manager
+resources:
+  - namespace.yaml
+  - sealed-digitalocean-token-secret.json
+  - issuer-letsencrypt-prod.yaml
+  - cert-prod-masterloft-k8s-marcel-lambacher-de.yaml
+
+helmCharts:
+- name: cert-manager
+  includeCRDs: true
+  valuesMerge: merge
+  valuesFile: values.yaml
+  releaseName: cert-manager
+  version: v1.9.1
+  repo: https://charts.jetstack.io
