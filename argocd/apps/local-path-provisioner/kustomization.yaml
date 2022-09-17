@@ -1,0 +1,4 @@
+kind: Kustomization
+namespace: local-path-provisioner
+resources:
+  - https://raw.githubusercontent.com/rancher/local-path-provisioner/v0.0.22/deploy/local-path-storage.yaml
