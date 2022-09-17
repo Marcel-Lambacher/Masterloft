@@ -36,6 +36,6 @@ volumes:
   - name: data
     path: /data
     size: 1Gi
-    storageClass: local-path-ssd-auto-backup
+    storageClass: local-path
     pvcAnnotations: 
       helm.sh/resource-policy: keep
