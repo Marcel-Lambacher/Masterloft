@@ -4,7 +4,7 @@ namespace: cert-manager
 resources:
   # - namespace.yaml
   - sealed-digitalocean-token-secret.json
-  # - https://github.com/cert-manager/cert-manager/releases/download/v1.9.1/cert-manager.yaml
+  - https://github.com/cert-manager/cert-manager/releases/download/v1.9.1/cert-manager.yaml
   - issuer-letsencrypt-prod.yaml
   - cert-prod-masterloft-k8s-marcel-lambacher-de.yaml
 
