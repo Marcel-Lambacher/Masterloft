@@ -1,0 +1,5 @@
+---
+- name: Apply cert-manager
+  become: true
+  become_user: "{{ ansible_ssh_user }}"
+  command: "kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v{{ cert_manager_version }}/cert-manager.yaml"
