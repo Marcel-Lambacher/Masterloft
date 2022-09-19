@@ -22,7 +22,6 @@ spec:
   tls:
   - hosts:
     - argocd.masterloft.k8s.marcel-lambacher.de
-    secretName: masterloft-k8s-marcel-lambacher-de-tls
 
 status:
   loadBalancer: {}

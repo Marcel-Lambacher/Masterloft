@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: cert-manager
+  name: lets-encrypt
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
@@ -11,10 +11,10 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: argocd/apps/cert-manager
+    path: argocd/apps/lets-encrypt
     repoURL: 'https://github.com/Marcel-Lambacher/Masterloft.git'
     targetRevision: HEAD
   syncPolicy:
     automated:
-      prune: false
+      prune: true
       selfHeal: true

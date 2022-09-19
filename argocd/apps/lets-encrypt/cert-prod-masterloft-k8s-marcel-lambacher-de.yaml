@@ -2,12 +2,12 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: masterloft-k8s-marcel-lambacher-de
+  name: masterloft-k8s-marcel-lambacher-de-tls
   namespace: kube-system
 spec:
   secretName: masterloft-k8s-marcel-lambacher-de-tls
   issuerRef:
-    name: letsencrypt-staging
+    name: letsencrypt-prod
     kind: ClusterIssuer
   commonName: "*.masterloft.k8s.marcel-lambacher.de"
   dnsNames:
