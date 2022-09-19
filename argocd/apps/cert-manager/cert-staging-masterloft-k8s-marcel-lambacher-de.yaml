@@ -3,7 +3,7 @@ apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   name: masterloft-k8s-marcel-lambacher-de
-  namespace: kube-system
+  namespace: default
 spec:
   secretName: masterloft-k8s-marcel-lambacher-de-tls
   issuerRef:
