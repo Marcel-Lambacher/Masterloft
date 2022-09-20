@@ -35,7 +35,7 @@ livenessProbe:
 volumes:
   - name: data
     path: /data
-    size: 1Gi
+    size: 10Gi
     storageClass: local-path
     pvcAnnotations: 
       helm.sh/resource-policy: keep
