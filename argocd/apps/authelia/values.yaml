@@ -1,6 +1,6 @@
-# persistence:
-#   enabled: true
-#   storageClass: "local-path-ssd-auto-backup"
+persistence:
+  enabled: true
+  storageClass: local-path
 
 secret:
   existingSecret: "authelia-secrets"
