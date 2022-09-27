@@ -1,6 +1,6 @@
 persistence:
   enabled: true
-  storageClass: local-path
+  storageClass: longhorn-single-replica
 
 secret:
   existingSecret: "authelia-secrets"
