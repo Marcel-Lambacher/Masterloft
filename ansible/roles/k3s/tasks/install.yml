@@ -27,6 +27,10 @@
   ansible.builtin.apt:
     name: apparmor-utils
 
+- name: Install open-iscsi
+  ansible.builtin.apt:
+    name: open-iscsi
+
 - name: Enable and check K3s service
   systemd:
     name: k3s

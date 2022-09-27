@@ -1,0 +1,11 @@
+ingress:
+  ## Set to true to enable ingress record generation
+  enabled: true
+
+  ## Add ingressClassName to the Ingress
+  ## Can replace the kubernetes.io/ingress.class annotation on v1.18+
+  ingressClassName: ~
+  annotations:
+    kubernetes.io/ingress.class: traefik
+
+  host: longhorn.masterloft.k8s.marcel-lambacher.de
