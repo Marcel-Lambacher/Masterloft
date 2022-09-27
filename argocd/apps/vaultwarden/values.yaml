@@ -36,6 +36,6 @@ volumes:
   - name: data
     path: /data
     size: 10Gi
-    storageClass: longhorn
+    storageClass: longhorn-single-replica
     pvcAnnotations: 
       helm.sh/resource-policy: keep
