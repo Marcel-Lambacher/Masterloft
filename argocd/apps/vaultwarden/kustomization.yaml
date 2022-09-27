@@ -4,6 +4,9 @@ namespace: vaultwarden
 resources:
   - namespace.yaml
 
+commonAnnotations:
+  backup.velero.io/backup-volumes: data
+
 helmCharts:
 - name: onechart
   includeCRDs: false
