@@ -28,3 +28,40 @@ datasources:
      url: http://prometheus.monitoring.svc.cluster.local:9090
      access: proxy
      isDefault: true
+
+dashboardProviders:
+ dashboardproviders.yaml:
+   apiVersion: 1
+   providers:
+   - name: 'default'
+     orgId: 1
+     folder: ''
+     type: file
+     disableDeletion: false
+     editable: true
+     options:
+       path: /var/lib/grafana/dashboards/default
+
+dashboards:
+  default:
+    kubernetes-nodes:
+      gnetId: 8171
+      revision: 1
+      datasource: Prometheus
+    kubernetes-cluster:
+      gnetId: 7249
+      revision: 1
+      datasource: Prometheus
+    kubernetes-cluster-prometheus:
+      gnetId: 6417
+      revision: 1
+      datasource: Prometheus
+    k3s:
+      gnetId: 15282
+      revision: 1
+      datasource: Prometheus
+    kube-state-metrics-v2:
+      gnetId: 13332
+      revision: 1
+      datasource: Prometheus
+
