@@ -1,0 +1,51 @@
+vars:
+  PUID: 1000
+  PGID: 1001
+
+resources:
+  ignore: true
+
+ingress:
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    traefik.ingress.kubernetes.io/router.middlewares: authelia-forwardauth-authelia@kubernetescrd
+  host: radarr.masterloft.k8s.marcel-lambacher.de
+  # TLS is deactived in ingress, since default cert of traefik will take care of it (TLS per default)
+  tlsEnabled: false
+
+replicas: 1
+
+containerPort: 7878
+
+probe:
+  enabled: false
+  path: "/"
+  settings:
+    initialDelaySeconds: 0
+    periodSeconds: 10
+    successThreshold: 1
+    timeoutSeconds: 3
+    failureThreshold: 3
+
+livenessProbe:
+  enabled: false
+  path: "/"
+  settings:
+    initialDelaySeconds: 0
+    periodSeconds: 10
+    successThreshold: 1
+    timeoutSeconds: 3
+    failureThreshold: 3
+
+volumes:
+  - name: config
+    path: /config
+    size: 1Gi
+    storageClass: longhorn-single-replica
+    pvcAnnotations: 
+      helm.sh/resource-policy: keep
+
+  - name: data
+    path: /data
+    hostPath:
+      path: /data
