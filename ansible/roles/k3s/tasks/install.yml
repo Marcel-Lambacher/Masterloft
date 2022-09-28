@@ -86,33 +86,3 @@
     dest: /home/{{ ansible_user }}/.kube/config
     remote_src: yes
     owner: "{{ ansible_user }}"
-
-- name: Apply traefik dynamic configmap 1/3
-  template:
-    dest: /tmp/traefik-dynamic-config-map.yaml
-    src: "traefik-dynamic-config-map.yaml.j2"
-
-- name: Apply traefik dynamic configmap 2/3
-  become: true
-  become_user: "{{ ansible_ssh_user }}"
-  command: "kubectl apply -f /tmp/traefik-dynamic-config-map.yaml"
-
-- name: Apply traefik dynamic configmap 3/3
-  file:
-    path: /tmp/traefik-dynamic-config-map.yaml
-    state: absent
-
-- name: Apply traefik config 1/3
-  template:
-    dest: /tmp/traefik-config.yaml
-    src: "traefik-config.yaml.j2"
-
-- name: Apply straefik config 2/3
-  become: true
-  become_user: "{{ ansible_ssh_user }}"
-  command: "kubectl apply -f /tmp/traefik-config.yaml"
-
-- name: Apply traefik config 3/3
-  file:
-    path: /tmp/traefik-config.yaml
-    state: absent
