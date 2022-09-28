@@ -1,0 +1,28 @@
+dnsmasq:
+  customDnsEntries: []
+  customCnameEntries: []
+
+persistentVolumeClaim:
+  enabled: true
+
+ingress:
+  enabled: true
+  annotations:
+    kubernetes.io/ingress.class: traefik
+  path: /
+  hosts:
+    - pihole.masterloft.k8s.marcel-lambacher.de
+
+persistentVolumeClaim:
+  enabled: ture
+  storageClass: longhorn-single-replica
+
+serviceDns:
+  loadBalancerIP: 192.168.178.65
+  annotations:
+    metallb.universe.tf/allow-shared-ip: pihole-svc
+  type: LoadBalancer
+
+admin:
+  existingSecret: "pihole-admin-secret"
+  passwordKey: "password"
