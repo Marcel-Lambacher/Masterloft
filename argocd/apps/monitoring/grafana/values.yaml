@@ -18,3 +18,13 @@ admin:
   existingSecret: "grafana-admin-user"
   userKey: admin-user
   passwordKey: admin-password
+
+datasources:
+ datasources.yaml:
+   apiVersion: 1
+   datasources:
+   - name: Prometheus
+     type: prometheus
+     url: http://prometheus.monitoring.svc.cluster.local:9090
+     access: proxy
+     isDefault: true

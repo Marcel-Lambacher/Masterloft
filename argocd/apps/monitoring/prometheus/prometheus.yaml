@@ -31,8 +31,21 @@ spec:
         resources:
           requests:
             storage: 20Gi
-      
-  # containers:
+
+  containers:
+  - name: config-reloader
+    resources:
+      requests:
+        cpu: 0m
+        memory: 0Mi
+
+  initContainers:
+  - name: init-config-reloader
+    resources:
+      requests:
+        cpu: 0m
+        memory: 0Mi
+
   # - name: prometheus
   #   resources: {}
   # - name: reloader-web
