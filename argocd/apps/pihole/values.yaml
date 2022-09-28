@@ -9,6 +9,7 @@ ingress:
   enabled: true
   annotations:
     kubernetes.io/ingress.class: traefik
+    traefik.ingress.kubernetes.io/router.middlewares: pihole-pihole-admin-panel-redirect-middleware@kubernetescrd
   path: /
   hosts:
     - pihole.masterloft.k8s.marcel-lambacher.de
