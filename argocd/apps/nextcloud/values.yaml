@@ -3,6 +3,11 @@ ingress:
   annotations:
     kubernetes.io/ingress.class: traefik
 
+securityContext:
+  runAsUser: 1000
+  runAsGroup: 1001
+  runAsNonRoot: true
+
 nextcloud:
   host: nextcloud.masterloft.k8s.marcel-lambacher.de
   existingSecret:
@@ -12,14 +17,19 @@ nextcloud:
     passwordKey: password
 
   extraVolumes:
-   - name: nfs
-     nfs:
-       server: "192.168.178.65"
-       path: "/Storage"
-       readOnly: false
+  - name: masterloft-nas-storage
+    hostPath:
+      path: /data
+      type: ""
+
   extraVolumeMounts:
-   - name: nfs
-     mountPath: "/nfs-masterloft-storage"
+   - name: masterloft-nas-storage
+     mountPath: /masterloft-nas-storage
+
+  extraSecurityContext:
+    runAsUser: 1000
+    runAsGroup: 1001
+    runAsNonRoot: true
 
 persistence:
   enabled: true

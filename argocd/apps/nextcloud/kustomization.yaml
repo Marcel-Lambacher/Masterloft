@@ -15,3 +15,9 @@ helmCharts:
   releaseName: nextcloud
   version: 3.1.2
   repo: https://nextcloud.github.io/helm/
+
+patches:
+- path: patch-deployment-security-context.yaml
+  target:
+    kind: Deployment
+    labelSelector: app.kubernetes.io/name=nextcloud
