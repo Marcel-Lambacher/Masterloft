@@ -31,6 +31,14 @@
   ansible.builtin.apt:
     name: open-iscsi
 
+- name: Increae mfs.inotify.max_user_instances
+  sysctl:
+    name: fs.inotify.max_user_instances
+    value: "12288"
+    state: present
+    sysctl_set: yes
+    reload: yes
+
 - name: Enable and check K3s service
   systemd:
     name: k3s

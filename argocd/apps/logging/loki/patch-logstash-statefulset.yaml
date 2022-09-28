@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: loki-logstash
+  namespace: logging
+spec:
+  podManagementPolicy: Parallel
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: loki-logstash
+      release: loki
+  serviceName: loki-logstash-headless
+  template:
+    metadata:
+      name: loki-logstash
+    spec:
+      containers:
+      - name: logstash
+        ports:
+        - containerPort: 9600
+          name: http
+          protocol: TCP
+        resources:
+          limits:
+            cpu: "1"
+            memory: 1536Mi
+          requests:
+            cpu: 0m
+            memory: 0Mi

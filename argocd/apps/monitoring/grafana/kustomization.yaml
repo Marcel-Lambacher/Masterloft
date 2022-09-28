@@ -14,3 +14,9 @@ helmCharts:
   releaseName: grafana
   version: 6.39.0
   repo: https://grafana.github.io/helm-charts
+
+- name: grafana-agent-operator
+  includeCRDs: true
+  releaseName: grafana
+  version: 0.2.5
+  repo: https://grafana.github.io/helm-charts

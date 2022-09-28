@@ -29,6 +29,11 @@ datasources:
      access: proxy
      isDefault: true
 
+   - name: Loki
+     type: loki
+     url: http://loki.logging.svc.cluster.local:3100
+     access: proxy
+
 dashboardProviders:
  dashboardproviders.yaml:
    apiVersion: 1
