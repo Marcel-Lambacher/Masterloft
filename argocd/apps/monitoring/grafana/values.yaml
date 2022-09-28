@@ -1,0 +1,20 @@
+ingress:
+  enabled: true
+  annotations:
+    kubernetes.io/ingress.class: traefik
+  hosts:
+    - grafana.masterloft.k8s.marcel-lambacher.de
+
+persistence:
+  type: pvc
+  enabled: true
+  storageClassName: longhorn-single-replica
+  accessModes:
+    - ReadWriteOnce
+  size: 10Gi
+
+admin:
+  ## Name of the secret. Can be templated.
+  existingSecret: "grafana-admin-user"
+  userKey: admin-user
+  passwordKey: admin-password
