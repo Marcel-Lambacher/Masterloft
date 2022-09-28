@@ -9,7 +9,7 @@ commonAnnotations:
 
 helmCharts:
 - name: grafana
-  includeCRDs: false
+  includeCRDs: true
   valuesFile: values.yaml
   releaseName: grafana
   version: 6.39.0
