@@ -4,7 +4,8 @@ namespace: pihole
 resources:
   - namespace.yaml
   - seaeld-pihole-admin-secret.json
-  - pihole-admin-panel-redirect-middleware.yaml
+  - strip-admin-path-prefix-middleware.yaml
+  - redirect-admin-path-prefix-middleware.yaml
 
 commonAnnotations:
   backup.velero.io/backup-volumes: config

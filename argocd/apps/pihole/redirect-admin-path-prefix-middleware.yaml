@@ -1,7 +1,7 @@
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
-  name: pihole-admin-panel-redirect-middleware
+  name: redirect-admin-path-prefix-middleware
   namespace: pihole
 spec:
   addPrefix:
