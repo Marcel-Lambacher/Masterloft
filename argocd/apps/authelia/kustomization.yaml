@@ -7,6 +7,9 @@ resources:
   - sealed-authelia-secrets.json
   - middleware.yaml
 
+commonAnnotations:
+  backup.velero.io/backup-volumes: authelia
+
 helmCharts:
 - name: authelia
   includeCRDs: false
