@@ -2,6 +2,7 @@ ingress:
   enabled: true
   annotations:
     kubernetes.io/ingress.class: traefik
+    traefik.ingress.kubernetes.io/router.middlewares: nextcloud-redirect-card-and-cal-dav@kubernetescrd
 
 securityContext:
   runAsUser: 1000
@@ -15,6 +16,14 @@ nextcloud:
     secretName: nextcloud-admin-secret
     usernameKey: username
     passwordKey: password
+
+  configs:
+    traefik.config.php: |-
+      <?php
+      $CONFIG = array (
+        'overwrite.cli.url' => 'https://nextcloud.masterloft.k8s.marcel-lambacher.de',
+        'overwriteprotocol' => 'https'
+      );
 
   extraVolumes:
   - name: masterloft-nas-storage

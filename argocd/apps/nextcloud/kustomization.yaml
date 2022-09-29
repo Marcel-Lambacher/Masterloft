@@ -4,6 +4,7 @@ namespace: nextcloud
 resources:
   - namespace.yaml
   - sealed-nextcloud-admin-secret.json
+  - redirect-card-and-cal-dav.yaml
 
 commonAnnotations:
   backup.velero.io/backup-volumes: nextcloud-data
