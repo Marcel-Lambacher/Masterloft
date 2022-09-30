@@ -8,12 +8,7 @@ resources:
 helmCharts:
 - name: onechart
   includeCRDs: false
-  valuesMerge: merge
   valuesFile: values.yaml
-  valuesInline:
-    image:
-      repository: linuxserver/nzbget
-      tag: 21.1.20220908
   releaseName: nzbget
   version: 0.46.0
   repo: https://marcel-lambacher.github.io/onechart
