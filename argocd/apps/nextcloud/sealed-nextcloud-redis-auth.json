@@ -1,0 +1,31 @@
+{
+    "kind": "SealedSecret",
+    "apiVersion": "bitnami.com/v1alpha1",
+    "metadata": {
+      "name": "nextcloud-redis-auth",
+      "namespace": "nextcloud",
+      "creationTimestamp": null,
+      "annotations": {
+        "sealedsecrets.bitnami.com/cluster-wide": "true"
+      }
+    },
+    "spec": {
+      "template": {
+        "metadata": {
+          "name": "nextcloud-redis-auth",
+          "namespace": "nextcloud",
+          "creationTimestamp": null,
+          "annotations": {
+            "sealedsecrets.bitnami.com/cluster-wide": "true"
+          },
+          "labels": {
+            "velero.io/exclude-from-backup": "true"
+          }
+        },
+        "data": null
+      },
+      "encryptedData": {
+        "password": "AgA4LWQm/burce83CaSxckPgMeb7hAKA7t0JX4y5W66xjAKxZ8aOKFZec/SpnfNLBG+evTd1GQzd09kMNn6k7X7u95wwlzoYZKygWUdxIDr64XTm1inAejMOYAx6X8zhxW8uHbHVJaO8k+njKy8dd/zvQJsk3OHPrR4RsgZUk6fuGTe0h8SXb+YU4mqmR49QN0JpUx3n6g0SIvZtfA8T1nDxbDO1QKzA6mElSUAa1dfPMMXQlgR+myvWrVDzoGyskHVtdq3+jCwYpZcSLkPobI0d+coi3obuSXILAFraFeLWwZfqviVqSVCYloq3XFMJOO7oz3aJh7Tgx7C/Ds8JcPkGcmkgd28aoJiRfj1odF0tmovmb1Ib8UnsBo4hoDjCugl/+ITphRZgcGH9Y0XrmZBj6oNhPrCXjgHJcGJ8FggGYnkUsTDb9DzYI84NSWDiCQdFDbZHAw9ZE3xCDr8cNCjFpZFZUmHwliLL95/afOLo8Lm0PVDu/6jRStD8K61z6LGpnB0XenWkKoZaAM4y4tMdrSZfMKWU2DDf9t3Me6y9diPiT0UrZ0nYXikYtWWGqvlBdUglh4Vqfs9f2347DtgCTOjPIvlMOgTsUW3/OHsTbn9aOjBRtil5Ou3mIedHkc/ixwCDOnvIBuP18bOBIX4G/kwrwwxCti0oLVUXtFw8ogLqshRLuFFz3xv2wzdqCzZmBNLrrLVii2FfEV0aAqr9E+yRyaxoBoEB1OJ5bmg="
+      }
+    }
+  }

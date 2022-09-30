@@ -5,6 +5,7 @@ resources:
   - namespace.yaml
   - sealed-nextcloud-admin-secret.json
   - redirect-card-and-cal-dav.yaml
+  - sealed-nextcloud-redis-auth.json
 
 commonAnnotations:
   backup.velero.io/backup-volumes: nextcloud-data
@@ -17,8 +18,8 @@ helmCharts:
   version: 3.1.2
   repo: https://nextcloud.github.io/helm/
 
-patches:
-- path: patch-deployment-security-context.yaml
-  target:
-    kind: Deployment
-    labelSelector: app.kubernetes.io/name=nextcloud
+# patches:
+# - path: patch-deployment-security-context.yaml
+#   target:
+#     kind: Deployment
+#     labelSelector: app.kubernetes.io/name=nextcloud

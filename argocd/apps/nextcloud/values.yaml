@@ -43,3 +43,15 @@ nextcloud:
 persistence:
   enabled: true
   storageClass: longhorn-single-replica
+
+# redis:
+#   global:
+#     storageClass: longhorn-single-replica
+#   architecture: standalone
+#   enabled: true
+#   # persistence:
+#   #   storageClass: longhorn-single-replica
+#   auth:
+#     enabled: true
+#     existingSecret: nextcloud-redis-auth
+#     existingSecretPasswordKey: password
