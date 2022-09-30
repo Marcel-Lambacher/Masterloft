@@ -10,12 +10,7 @@ commonAnnotations:
 helmCharts:
 - name: onechart
   includeCRDs: false
-  valuesMerge: merge
   valuesFile: values.yaml
-  valuesInline:
-    image:
-      repository: vaultwarden/server
-      tag: latest
   releaseName: vaultwarden
   version: 0.46.0
   repo: https://marcel-lambacher.github.io/onechart

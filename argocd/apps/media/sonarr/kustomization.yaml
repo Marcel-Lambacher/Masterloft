@@ -8,12 +8,7 @@ commonAnnotations:
 helmCharts:
 - name: onechart
   includeCRDs: false
-  valuesMerge: merge
   valuesFile: values.yaml
-  valuesInline:
-    image:
-      repository: linuxserver/sonarr 
-      tag: 3.0.9
   releaseName: sonarr
   version: 0.46.0
   repo: https://marcel-lambacher.github.io/onechart

@@ -1,3 +1,7 @@
+image:
+  repository: linuxserver/radarr 
+  tag: 4.1.0
+
 vars:
   PUID: 1000
   PGID: 1001
