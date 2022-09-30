@@ -4,10 +4,14 @@ ingress:
     kubernetes.io/ingress.class: traefik
     traefik.ingress.kubernetes.io/router.middlewares: nextcloud-redirect-card-and-cal-dav@kubernetescrd
 
-securityContext:
-  runAsUser: 1000
-  runAsGroup: 1001
-  runAsNonRoot: true
+# securityContext:
+#   runAsUser: 1000
+#   runAsGroup: 1001
+#   runAsNonRoot: true
+
+lifecycle:
+  # postStartCommand: ["/bin/sh", "-c", "apt install smbclient libsmbclient-dev; pecl install smbclient; docker-php-ext-enable smbclient"]
+  postStartCommand: ["/bin/sh", "-c", "apt update && apt install -y smbclient libsmbclient-dev"]
 
 nextcloud:
   host: nextcloud.masterloft.k8s.marcel-lambacher.de
@@ -35,10 +39,10 @@ nextcloud:
    - name: masterloft-nas-storage
      mountPath: /masterloft-nas-storage
 
-  extraSecurityContext:
-    runAsUser: 1000
-    runAsGroup: 1001
-    runAsNonRoot: true
+  # extraSecurityContext:
+  #   runAsUser: 1000
+  #   runAsGroup: 1001
+  #   runAsNonRoot: true
 
 persistence:
   enabled: true
