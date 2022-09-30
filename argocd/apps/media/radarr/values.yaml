@@ -1,6 +1,6 @@
 image:
   repository: linuxserver/radarr 
-  tag: 4.1.0
+  tag: 4.2.4
 
 vars:
   PUID: 1000
