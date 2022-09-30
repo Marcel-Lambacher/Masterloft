@@ -4,8 +4,14 @@
     "config:base"
   ],
   "ignorePaths": [
-    "ansible/",
     "pulumi/",
     "deprecated-fluxcd/"
+  ],
+  "regexManagers": [
+    {
+      "fileMatch": ["(^|/|\\.|.*)vars$"],
+      "matchStrings": ["version: (?<currentValue>.*) # renovate: depName=(?<depName>.*)$"],
+      "datasourceTemplate": "github-releases"
+    }
   ]
 }
