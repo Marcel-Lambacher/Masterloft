@@ -1,0 +1,29 @@
+primary:
+  persistence:
+    storageClass: longhorn-single-replica
+
+  resources:
+    requests:
+      memory: 0Mi
+      cpu: 0m
+
+  extraVolumeMounts:
+    - name: postgresql-initdb
+      mountPath: /docker-entrypoint-initdb.d/
+
+  extraVolumes :
+    - name: postgresql-initdb
+      secret:
+        secretName: postgresql-initdb
+          
+  auth:
+    enablePostgresUser: true
+  global:
+    storageClass: longhorn-single-replica
+
+    postgresql:
+      auth:
+        existingSecret: postgresql-admin
+        secretKeys:
+          adminPasswordKey: postgres-password
+          replicationPasswordKey: replication-password
