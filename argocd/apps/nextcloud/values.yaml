@@ -47,13 +47,24 @@ redis:
     existingSecret: nextcloud-redis-auth
     existingSecretPasswordKey: password
 
+# externalDatabase:
+#   enabled: true
+#   type: postgresql
+#   host: database.postgresql.svc.cluster.local:5432
+#   database: nextcloud
+#   existingSecret:
+#     enabled: true
+#     secretName: nextcloud-postgresql-auth
+#     usernameKey: username
+#     passwordKey: password
+
 externalDatabase:
   enabled: true
-  type: postgresql
-  host: database.postgresql.svc.cluster.local:5432
+  type: mysql
+  host: database.mariadb.svc.cluster.local:3306
   database: nextcloud
   existingSecret:
     enabled: true
-    secretName: nextcloud-postgresql-auth
+    secretName: nextcloud-mariadb-auth
     usernameKey: username
     passwordKey: password

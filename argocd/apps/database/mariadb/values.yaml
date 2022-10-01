@@ -1,0 +1,17 @@
+global:
+  storageClass: longhorn-single-replica
+  
+auth:
+  username: marlam
+  database: masterloft 
+  existingSecret: mariadb-init-secrets
+
+primary:
+  extraVolumeMounts:
+    - name: mariadb-initdb
+      mountPath: /docker-entrypoint-initdb.d/
+
+  extraVolumes :
+    - name: mariadb-initdb
+      secret:
+        secretName: mariadb-initdb
