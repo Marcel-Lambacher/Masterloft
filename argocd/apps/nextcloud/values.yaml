@@ -57,3 +57,14 @@ redis:
     enabled: true
     existingSecret: nextcloud-redis-auth
     existingSecretPasswordKey: password
+
+externalDatabase:
+  enabled: true
+  type: postgresql
+  host: database.postgresql.svc.cluster.local
+  database: nextcloud
+  existingSecret:
+    enabled: true
+    secretName: nextcloud-postgresql-auth
+    usernameKey: username
+    passwordKey: password
