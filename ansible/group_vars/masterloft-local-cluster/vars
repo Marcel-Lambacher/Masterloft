@@ -11,7 +11,7 @@ wireguard_endpoint: 20.107.5.56:55107
 
 # K3S
 k3s_version: v1.25.2+k3s1 # renovate: depName=k3s-io/k3s
-k3s_checksum: sha256:2ca446c6180675b39d241d14cf7f5a329f366e929fb35b0388e303657ad6e006
+k3s_checksum: sha256:1f76cfc0b8434a7eaa665dffcd016e477a2cff47f7ee2d4a3b7a3db23b05eff6
 kubectl_version: v1.25.0
 kubectl_checksum: sha256:e23cc7092218c95c22d8ee36fb9499194a36ac5b5349ca476886b7edc0203885
 helm_version: v3.9.4
