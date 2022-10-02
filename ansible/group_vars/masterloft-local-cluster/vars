@@ -10,7 +10,7 @@ wireguard_private_key: "{{ vault_wireguard_private_key }}"
 wireguard_endpoint: 20.107.5.56:55107
 
 # K3S
-k3s_version: v1.24.4+k3s1 # renovate: depName=k3s-io/k3s
+k3s_version: v1.25.2+k3s1 # renovate: depName=k3s-io/k3s
 k3s_checksum: sha256:2ca446c6180675b39d241d14cf7f5a329f366e929fb35b0388e303657ad6e006
 kubectl_version: v1.25.0
 kubectl_checksum: sha256:e23cc7092218c95c22d8ee36fb9499194a36ac5b5349ca476886b7edc0203885
