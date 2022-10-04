@@ -12,7 +12,7 @@ helmCharts:
   includeCRDs: true
   valuesFile: values.yaml
   releaseName: grafana
-  version: 6.40.0
+  version: 6.40.1
   repo: https://grafana.github.io/helm-charts
 
 - name: grafana-agent-operator
