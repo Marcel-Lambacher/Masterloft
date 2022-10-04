@@ -1,0 +1,53 @@
+namespaceOverride: monitoring
+
+alertmanager:
+  resources: 
+    requests:
+      cpu: 0m
+      memory: 0Mi
+
+grafana:
+  admin:
+    existingSecret: "grafana-admin-user"
+    userKey: admin-user
+    passwordKey: admin-password
+
+  ingress:
+    enabled: true
+    annotations:
+      kubernetes.io/ingress.class: traefik
+
+    hosts:
+      - grafana.masterloft.k8s.marcel-lambacher.de
+
+  additionalDataSources:
+    - name: Loki
+      access: proxy
+      type: loki
+      url: http://loki.logging.svc.cluster.local:3100
+
+prometheus:
+  resources: 
+    requests:
+      cpu: 0m
+      memory: 0Mi
+
+  ingress:
+    enabled: true
+    annotations:
+      kubernetes.io/ingress.class: traefik
+      traefik.ingress.kubernetes.io/router.middlewares: authelia-forwardauth-authelia@kubernetescrd
+
+    hosts:
+      - prometheus.masterloft.k8s.marcel-lambacher.de
+
+    pathType: Prefix
+    paths:
+      - /
+
+prometheusOperator:
+  prometheusConfigReloader:
+    resources:
+      requests:
+        cpu: 0m
+        memory: 0Mi
