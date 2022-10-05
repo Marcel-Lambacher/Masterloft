@@ -1,0 +1,40 @@
+image:
+  repository: plexinc/pms-docker
+  tag: 1.29.0.6244-819d3678c
+resources:
+  ignore: true
+
+ingress:
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    # traefik.ingress.kubernetes.io/router.middlewares: authelia-forwardauth-authelia@kubernetescrd, media-nzgbet-add-basic-auth-prefix-middleware@kubernetescrd
+  host: plex.masterloft.k8s.marcel-lambacher.de
+  # TLS is deactived in ingress, since default cert of traefik will take care of it (TLS per default)
+  tlsEnabled: false
+
+replicas: 1
+
+containerPort: 32400
+
+secretName: sealed-plex-claim
+
+vars:
+  PLEX_UID: 1000
+  PLEX_GID: 1001
+  ADVERTISE_IP: "http://192.168.178.65:32400/,https://plex.masterloft.k8s.marcel-lambacher.de:443/"
+
+volumes:
+  - name: data
+    path: /data
+    hostPath:
+      path: /data/media
+
+  - name: config
+    path: /config
+    size: 20Gi
+    storageClass: longhorn-single-replica
+
+  - name: transcode
+    path: /transcode
+    size: 20Gi
+    storageClass: longhorn-single-replica

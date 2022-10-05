@@ -1,0 +1,30 @@
+{
+    "kind": "SealedSecret",
+    "apiVersion": "bitnami.com/v1alpha1",
+    "metadata": {
+      "name": "sealed-plex-claim",
+      "namespace": "media",
+      "creationTimestamp": null,
+      "annotations": {
+        "sealedsecrets.bitnami.com/cluster-wide": "true"
+      }
+    },
+    "spec": {
+      "template": {
+        "metadata": {
+          "name": "sealed-plex-claim",
+          "namespace": "media",
+          "creationTimestamp": null,
+          "annotations": {
+            "sealedsecrets.bitnami.com/cluster-wide": "true"
+          },
+          "labels": {
+            "velero.io/exclude-from-backup": "true"
+          }
+        }
+      },
+      "encryptedData": {
+        "PLEX_CLAIM": "AgBJtwjbnuN22DHZ0na46CN18Hc8jJLGqykF/w/WvOBO8WnRwdmn5HZ/tPNdAMKpwywB9FHe0wIEEKKxaBAVKTlsYXwDhInNtU/QqlUrEKr30h9no83Q3Upo+neEKP3O11wTYKPmamo8eUUNvsmHmRJMH1Fkz5yRQpqf/aqVPu5zchvStbrO8xKxTXtppu+fDoA3Kz6LVAmcP8JAWXI768PFmHzFl42Ao7d4+gXEDdcZblOiobGO8GI8jPAg4x/j3aUyrDF+y+2SBn7M6J15pjkt8M0oLYnBisPbYWRh17lzGGeo9l5kohVn+O2Lie7/kexv6LG/4kFY2Jodc6ZgKpTJCAyJD+qdLTusgwrU31Oi2aJB+yauvfiRJ/merZB1VXGcSAGfxJAuxKj+0OlnLkJLdGWldVCkFpwQDaBVvG6VamBmXkNYIPWb9nb5LXu1Kf0UdvwZiqd0npMNF3jt7/V6rNbdAeomh5Us6RLdR5jjRgfmQYMd7BP1z/VS8+0hjzU9O5FGyzsPT8v1dGpDm3L2zP5ddXYQEsnWsC7CAxLpPrhKBWuwjRyNZqnhOflyqT2szqeTbkZUzOkPdiXIlL/ok2VJ5HF3D1tDSRw3EQ4TDKNK1a6z0Pas1kQS/nkHOeqJnVb+Un0Tzt7JgHdok9vuHCMsAsIO/AK4rzYk8+w4N3GwDwkUPW4i4BLnUfhT6JstzxoWBXGGNDDnz5gLULOch8cGYTU9yPCVkw=="
+      }
+    }
+  }
