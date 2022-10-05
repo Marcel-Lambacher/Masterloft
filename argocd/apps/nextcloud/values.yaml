@@ -58,13 +58,13 @@ redis:
 #     usernameKey: username
 #     passwordKey: password
 
-externalDatabase:
-  enabled: true
-  type: mysql
-  host: database.mariadb.svc.cluster.local:3306
-  database: nextcloud
-  existingSecret:
-    enabled: true
-    secretName: nextcloud-mariadb-auth
-    usernameKey: username
-    passwordKey: password
+# externalDatabase:
+#   enabled: true
+#   type: mysql
+#   host: database.mariadb.svc.cluster.local:3306
+#   database: nextcloud
+#   existingSecret:
+#     enabled: true
+#     secretName: nextcloud-mariadb-auth
+#     usernameKey: username
+#     passwordKey: password

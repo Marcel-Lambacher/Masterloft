@@ -1,2 +1,3 @@
 fullnameOverride: sealed-secrets-controller
 secretName: masterloft-sealed-secrets
+keyrenewperiod: "0"
