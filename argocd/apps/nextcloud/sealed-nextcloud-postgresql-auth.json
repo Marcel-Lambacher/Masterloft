@@ -1,0 +1,32 @@
+{
+    "kind": "SealedSecret",
+    "apiVersion": "bitnami.com/v1alpha1",
+    "metadata": {
+      "name": "nextcloud-postgresql-auth",
+      "namespace": "nextcloud",
+      "creationTimestamp": null,
+      "annotations": {
+        "sealedsecrets.bitnami.com/cluster-wide": "true"
+      }
+    },
+    "spec": {
+      "template": {
+        "metadata": {
+          "name": "nextcloud-postgresql-auth",
+          "namespace": "nextcloud",
+          "creationTimestamp": null,
+          "annotations": {
+            "sealedsecrets.bitnami.com/cluster-wide": "true"
+          },
+          "labels": {
+            "velero.io/exclude-from-backup": "true"
+          }
+        },
+        "data": null
+      },
+      "encryptedData": {
+        "password": "AgC4ZUCN28TTu8XU6DuiLDdvxe5d3AYqYCnqzPYzozMzb1/OL3aTzv0D32Jnzq/SulIRIOR/S5okwKKc8EeX/s2pZVP45B/ggWD9l9ZJ63EzgvPYaUMGxdwXAtTB2OR4eFF7A+Em0PWpWCdUVlb2yZ/CL3AGvx4Wv1vhSjeeJWhpHOCdGfTXcllhbgFZq1mGXNr1dctj4BYu8teJUPZArcjlHNKqXSVF2SCyoZZoergQExcFA8wNTcik2SLz05Ay4zl6rP/XXFtbB2xDjAKb3fC42qm25ckznE/1DWoE01Irq2XxKRm3p8pgtWAzoK3ahucjS+8YPe/meKkgy29qAm6gwgQ42iiedH2cYIbc59vrLIPsle7AUG4FHwJydqC3y8bBoCsebiq2VQjViiymETJAPgyJ5PevnfiLB/cJr1NfFhxOlL3fpLcKCCz7TybgtHuSS0ZPdhnUTUtm9IR0f9U8FMYztbnahFzrHtm++ITrJiw/aU2n9HWyxjdXfpOAVEJtW78sd/rOGKTZZd5fqT6q2Pd27mM33mzmDle0RB8pqKZnExl+mG3ywS1OdnDARgcIb1QtlVVFiHberKcPDT4WNNCgo8CW89sDSxmQGtxqgb+y+iQsseM+QYL8dqf8hrdA46w8pBUnahO6b0WA3sD6MMWz7sjEfQYnnqiJSzpINrn8dBEMLyyYwUzwYz6SJjVfpNkamnVJUucL7H5WA1ppN0SayDm7HPciES6wtFQ=",
+        "username": "AgBtDUJUCGP/B/KTdNVkTE37bx8ltNuCB+o8tjcfLqHPzErTQIdBbjTdaHI91S7+sOqYpMnm33dv9jEuBxeByLTrjOBap6FSMesxGaYZDfPPbsfO7ZFumdheqpkz1qFsHsEpbLItywFUB2ZyKz9Kx3BJyTsdx8DTOl6ZP9YNrwxcDKprVUAtO/MJyQ54T/gUrGQOv2gkeAoth8fAECLogRckqopstj6onskSdTB7GnQUqYZdvPq5poJhpy8uZ4N4ChOOnhfNBvHTa2NaC/aYe/9IlfsdKMb7agU99j9NjeNiGakNMnsW74Ek6CI4UIFkffL4I279hpZCFHSs8kJxXwzyrshn0km/mZ2IlgfoGCOVwFNfbrSVKLNjYVr6FMv39udulvAKmSboGc2PF++8lclvvRwnMhvGXPWFrei/8tCRNfut446NwFcy5wBcO0eqb54QjRYqJcQkp/UXbmLLtXFcmsudPT6Q62cx1332zqWKjGJi0zfLObyQabGhemRqC6x2X5UMoEMi9h+1lKuvbt2Jny5GbjA4gbtuGTKiPHcElJGXMqQdLii9q/0tNUkjmYKiSYUYhCX99fShtmI6uBnn0LDHP8I9pFheUu88+/GiDPxJqouLw5zq9UbqrvBqqgeUMSi6YmmmHuSNNidwU2juI3Ydk2SOcLKFpEo2BGUUWAjHK9k0jkkTaUmISYeKPrQq8KHkuxzhsb4="
+      }
+    }
+}
