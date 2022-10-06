@@ -51,3 +51,26 @@ prometheusOperator:
       requests:
         cpu: 0m
         memory: 0Mi
+
+kubeApiServer:
+  enabled: true
+kubeControllerManager:
+  enabled: true
+  endpoints:
+  - 192.168.178.65
+kubeScheduler:
+  enabled: true
+  endpoints:
+  - 192.168.178.65
+kubeProxy:
+  enabled: true
+  endpoints:
+  - 192.168.178.65
+kubeEtcd:
+  enabled: true
+  endpoints:
+  - 192.168.178.65
+  service:
+    enabled: true
+    port: 2381
+    targetPort: 2381
