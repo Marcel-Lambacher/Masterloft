@@ -13,5 +13,5 @@ helmCharts:
   includeCRDs: false
   valuesFile: values.yaml
   releaseName: postgresql
-  version: 11.9.6
+  version: 11.9.7
   repo: https://charts.bitnami.com/bitnami
