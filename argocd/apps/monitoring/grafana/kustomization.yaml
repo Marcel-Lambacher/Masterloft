@@ -1,0 +1,22 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: monitoring
+resources:
+  - sealed-grafana-admin-user.json
+
+commonAnnotations:
+  backup.velero.io/backup-volumes: storage
+
+helmCharts:
+- name: grafana
+  includeCRDs: true
+  valuesFile: values.yaml
+  releaseName: grafana
+  version: 6.40.0
+  repo: https://grafana.github.io/helm-charts
+
+- name: grafana-agent-operator
+  includeCRDs: true
+  releaseName: grafana
+  version: 0.2.7
+  repo: https://grafana.github.io/helm-charts

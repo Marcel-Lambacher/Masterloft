@@ -1,0 +1,72 @@
+ingress:
+  enabled: true
+  annotations:
+    kubernetes.io/ingress.class: traefik
+  hosts:
+    - grafana.masterloft.k8s.marcel-lambacher.de
+
+persistence:
+  type: pvc
+  enabled: true
+  storageClassName: longhorn-single-replica
+  accessModes:
+    - ReadWriteOnce
+  size: 10Gi
+
+admin:
+  ## Name of the secret. Can be templated.
+  existingSecret: "grafana-admin-user"
+  userKey: admin-user
+  passwordKey: admin-password
+
+datasources:
+ datasources.yaml:
+   apiVersion: 1
+   datasources:
+   - name: Prometheus
+     type: prometheus
+     url: http://prometheus.monitoring.svc.cluster.local:9090
+     access: proxy
+     isDefault: true
+
+   - name: Loki
+     type: loki
+     url: http://loki.logging.svc.cluster.local:3100
+     access: proxy
+
+dashboardProviders:
+ dashboardproviders.yaml:
+   apiVersion: 1
+   providers:
+   - name: 'default'
+     orgId: 1
+     folder: ''
+     type: file
+     disableDeletion: false
+     editable: true
+     options:
+       path: /var/lib/grafana/dashboards/default
+
+dashboards:
+  default:
+    kubernetes-nodes:
+      gnetId: 8171
+      revision: 1
+      datasource: Prometheus
+    kubernetes-cluster:
+      gnetId: 7249
+      revision: 1
+      datasource: Prometheus
+    kubernetes-cluster-prometheus:
+      gnetId: 6417
+      revision: 1
+      datasource: Prometheus
+    k3s:
+      gnetId: 15282
+      revision: 1
+      datasource: Prometheus
+    kube-state-metrics-v2:
+      gnetId: 13332
+      revision: 1
+      datasource: Prometheus
+
