@@ -3,12 +3,12 @@ kind: Kustomization
 namespace: monitoring
 resources:
   - namespace.yaml
-#   - sealed-grafana-admin-user.json
+  - sealed-grafana-admin-user.json
 
-# helmCharts:
-# - name: kube-prometheus-stack
-#   includeCRDs: true
-#   valuesFile: values.yaml
-#   releaseName: kube-prometheus-stack
-#   version: 40.3.1
-#   repo: https://prometheus-community.github.io/helm-charts
+helmCharts:
+- name: kube-prometheus-stack
+  includeCRDs: true
+  valuesFile: values.yaml
+  releaseName: kube-prometheus-stack
+  version: 40.3.1
+  repo: https://prometheus-community.github.io/helm-charts
