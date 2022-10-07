@@ -18,6 +18,14 @@
     group: root
     mode: 0755
 
+- name: Copy K3s config file
+  template:
+    src: "k3s-config.yaml.j2"
+    dest: "/etc/rancher/k3s/config.yaml"
+    owner: root
+    group: root
+    mode: 0644
+
 - name: Install apparmor userland
   ansible.builtin.apt:
     name: apparmor
