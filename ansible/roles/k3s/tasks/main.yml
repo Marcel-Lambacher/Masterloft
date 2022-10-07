@@ -10,4 +10,5 @@
 # - include_tasks: flux.yml
 
 - include_tasks: cert-manager.yml
+- include_tasks: kube-prometheus-stack.yml
 - include_tasks: argocd.yml

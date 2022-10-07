@@ -7,10 +7,10 @@ alertmanager:
       memory: 0Mi
 
 grafana:
-  # admin:
-  #   existingSecret: "grafana-admin-user"
-  #   userKey: admin-user
-  #   passwordKey: admin-password
+  admin:
+    existingSecret: "grafana-admin-user"
+    userKey: admin-user
+    passwordKey: admin-password
 
   ingress:
     enabled: true

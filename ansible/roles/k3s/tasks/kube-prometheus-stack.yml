@@ -1,0 +1,55 @@
+---
+- name: Apply monitoring namespace 1/3
+  template:
+    dest: /tmp/create-monitoring-namespace.yaml
+    src: "create-monitoring-namespace.yaml.j2"
+
+- name: Apply monitoring namespace 2/3
+  become: true
+  become_user: "{{ ansible_ssh_user }}"
+  command: "kubectl apply -f /tmp/create-monitoring-namespace.yaml"
+
+- name: Apply monitoring  namespace 3/3
+  file:
+    path: /tmp/create-monitoring-namespace.yaml
+    state: absent
+
+- name: Apply sealed secrets 1/3
+  template:
+    dest: /tmp/sealed-grafana-admin-user.json
+    src: "sealed-grafana-admin-user.json.j2"
+
+- name: Apply sealed secrets 2/3
+  become: true
+  become_user: "{{ ansible_ssh_user }}"
+  command: "kubectl apply -f /tmp/sealed-grafana-admin-user.json"
+
+- name: Apply sealed secrets 3/3
+  file:
+    path: /tmp/sealed-grafana-admin-user.json
+    state: absent
+
+- name: Apply kube-prometheus-stack values.yaml 1/2
+  template:
+    dest: /tmp/kube-prometheus-stack-values.yaml
+    src: "kube-prometheus-stack-values.yaml.j2"
+
+- name: Add kube-prometheus-stack helm repo
+  become: true
+  become_user: "{{ ansible_ssh_user }}"
+  command: "helm repo add prometheus-community https://prometheus-community.github.io/helm-charts"
+
+- name: Update helm repo
+  become: true
+  become_user: "{{ ansible_ssh_user }}"
+  command: "helm repo update"
+
+- name: Install kube-prometheus-stack.yml
+  become: true
+  become_user: "{{ ansible_ssh_user }}"
+  command: "helm upgrade --install kube-prometheus-stack --values /tmp/kube-prometheus-stack-values.yaml --namespace monitoring prometheus-community/kube-prometheus-stack"
+
+- name: Apply kube-prometheus-stack values.yaml 2/2
+  file:
+    path: /tmp/kube-prometheus-stack-values.yaml
+    state: absent
