@@ -1,16 +1,16 @@
 namespaceOverride: monitoring
 
 alertmanager:
-  resources: 
+  resources:
     requests:
       cpu: 0m
       memory: 0Mi
 
 grafana:
-  admin:
-    existingSecret: "grafana-admin-user"
-    userKey: admin-user
-    passwordKey: admin-password
+  # admin:
+  #   existingSecret: "grafana-admin-user"
+  #   userKey: admin-user
+  #   passwordKey: admin-password
 
   ingress:
     enabled: true
@@ -27,7 +27,7 @@ grafana:
       url: http://loki.logging.svc.cluster.local:3100
 
 prometheus:
-  resources: 
+  resources:
     requests:
       cpu: 0m
       memory: 0Mi
@@ -51,6 +51,10 @@ prometheusOperator:
       requests:
         cpu: 0m
         memory: 0Mi
+
+defaultRules:
+  rules:
+    etcd: false
 
 kubeApiServer:
   enabled: true
@@ -86,10 +90,4 @@ kubeProxy:
     - 192.168.178.65
 
 kubeEtcd:
-  enabled: true
-  endpoints:
-    - 192.168.178.65
-  service:
-    enabled: true
-    port: 2381
-    targetPort: 2381
+  enabled: false
