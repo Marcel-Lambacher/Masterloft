@@ -1,0 +1,47 @@
+image:
+  repository: ghcr.io/haveagitgat/tdarr
+  tag: 2.00.18.2
+
+vars:
+  PUID: 1000
+  PGID: 1001
+  serverPort: 8266
+  webUIPort: 8265
+  serverIP: 0.0.0.0
+  internalNode: true
+
+
+resources:
+  ignore: true
+
+ingress:
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    traefik.ingress.kubernetes.io/router.middlewares: authelia-forwardauth-authelia@kubernetescrd
+  host: tdarr.masterloft.k8s.marcel-lambacher.de
+  # TLS is deactived in ingress, since default cert of traefik will take care of it (TLS per default)
+  tlsEnabled: false
+
+replicas: 1
+
+containerPort: 8265
+
+volumes:
+  - name: server
+    path: /app/server
+    size: 1Gi
+    storageClass: longhorn-single-replica
+    pvcAnnotations: 
+      helm.sh/resource-policy: keep
+
+  - name: configs
+    path: /app/configs
+    size: 1Gi
+    storageClass: longhorn-single-replica
+    pvcAnnotations: 
+      helm.sh/resource-policy: keep
+
+  - name: media
+    path: /media
+    hostPath:
+      path: /data/media
