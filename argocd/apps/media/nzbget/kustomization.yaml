@@ -5,9 +5,6 @@ resources:
   - sealed-nzbget-config.json
   - add-basic-auth-prefix-middleware.yaml
 
-commonLabels:
-  app.kubernetes.io/name: nzbget
-
 helmCharts:
 - name: onechart
   includeCRDs: false
