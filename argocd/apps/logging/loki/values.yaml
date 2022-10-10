@@ -27,6 +27,19 @@ fluent-bit:
       cpu: 0m
       memory: 0Mi
   config:
+    labelMap:
+      kubernetes:
+        namespace_name: namespace
+        labels:
+          app: app
+          release: release
+          app.kubernetes.io/component: component
+          app.kubernetes.io/instance: instance
+          app.kubernetes.io/name: app
+        host: node
+        container_name: container
+        pod_name: instance
+      stream: stream
     service: |
       [SERVICE]
           Daemon Off
@@ -84,7 +97,7 @@ fluent-bit:
           BatchWait 1s
           BatchSize 30720 # (30KiB)
           AutoKubernetesLabels true
-          RemoveKeys key1,key2
+          auto_kubernetes_labels on
 
 promtail:
   enabled: false
