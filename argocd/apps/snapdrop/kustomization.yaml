@@ -4,6 +4,9 @@ namespace: snapdrop
 resources:
   - namespace.yaml
 
+commonLabels:
+  app.kubernetes.io/name: snapdrop
+
 helmCharts:
 - name: onechart
   includeCRDs: false

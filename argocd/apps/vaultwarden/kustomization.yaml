@@ -7,6 +7,9 @@ resources:
 commonAnnotations:
   backup.velero.io/backup-volumes: data
 
+commonLabels:
+  app.kubernetes.io/name: vaultwarden
+
 helmCharts:
 - name: onechart
   includeCRDs: false
