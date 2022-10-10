@@ -5,6 +5,9 @@ resources:
 - sealed-plex-claim.json
 - host-network-service.yaml
 
+commonLabels:
+  app.kubernetes.io/name: plex
+
 helmCharts:
 - name: onechart
   includeCRDs: false

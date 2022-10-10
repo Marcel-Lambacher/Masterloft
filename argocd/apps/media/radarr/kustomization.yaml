@@ -5,6 +5,9 @@ namespace: media
 commonAnnotations:
   backup.velero.io/backup-volumes: data
 
+commonLabels:
+  app.kubernetes.io/name: radarr
+
 helmCharts:
 - name: onechart
   includeCRDs: false
