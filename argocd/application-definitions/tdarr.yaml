@@ -15,6 +15,7 @@ spec:
     repoURL: 'https://github.com/Marcel-Lambacher/Masterloft.git'
     targetRevision: HEAD
   syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
+    automated: {}
+    # automated:
+    #   prune: true
+    #   selfHeal: true
