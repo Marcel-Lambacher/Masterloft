@@ -1,0 +1,7 @@
+---
+ssh_username: marlam
+
+ssh_private_key_pass: "{{ vault_ssh_private_key_pass }}"
+ssh_private_key_file: "{{ vault_ssh_private_key_file }}"
+ansible_sudo_pass: "{{ vault_ansible_sudo_pass }}"
+proxmox_cloud_init_password: "{{ vault_ansible_sudo_pass }}"

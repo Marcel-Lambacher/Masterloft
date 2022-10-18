@@ -6,12 +6,12 @@
   changed_when: no
   copy: 
     content: "{{ ssh_private_key_file }}"
-    dest: /tmp/masterloft.cluster
+    dest: /tmp/id_ansible
     mode: '0600'
 
 - name: "[PRE] Unlock SSH key"
   expect:
-    command: ssh-add /tmp/masterloft.cluster
+    command: ssh-add /tmp/id_ansible
     responses:
       passphrase: "{{ ssh_private_key_pass }}"
   delegate_to: 127.0.0.1

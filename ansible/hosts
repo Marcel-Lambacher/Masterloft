@@ -3,3 +3,7 @@
 
 [masterloft-remote-tunnel]
 masterloft.k8s.marcel-lambacher.de ansible_connection=ssh ansible_ssh_user=marlam
+
+[proxmox]
+#proxmox.local.lambacher.eu ansible_connection=ssh ansible_ssh_user=marlam
+192.168.178.28 ansible_connection=ssh ansible_ssh_user=marlam
