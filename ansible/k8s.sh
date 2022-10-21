@@ -1,0 +1,1 @@
+ansible-playbook -i proxmox-inventory.py k8s.yml --ask-vault-pass
