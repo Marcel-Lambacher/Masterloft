@@ -1,9 +1,9 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
+namespace: argocd
 
 resources:
-  # - argocd-repo-server-tls.yaml
-  # - argocd-initial-admin-secret.yaml
+  - namespace.yaml
   - https://raw.githubusercontent.com/argoproj/argo-cd/v2.4.11/manifests/install.yaml
   - ingress.yaml
   - bootstrap-app.yaml
@@ -11,6 +11,3 @@ resources:
 patchesStrategicMerge:
   - argocd-cmd-params-cm-patch.yaml
   - argocd-cm-patch.yaml
-  # - argocd-server-svc-patch.yaml
-
-namespace: argocd

@@ -1,0 +1,31 @@
+---
+
+- name: Apply argocd secrets private key  1/2
+  template:
+    dest: /tmp/create-sealed-argocd-secret.yaml
+    src: "create-sealed-argocd-secret.yaml.j2"
+
+- name: Apply argocd secrets private key 2/2
+  become: true
+  become_user: "{{ ansible_ssh_user }}"
+  command: "kubectl apply -f /tmp/create-sealed-argocd-secret.yaml"
+
+- name: Apply argocd admin secrets  1/2
+  template:
+    dest: /tmp/create.argocd-initial-admin-secret.yaml
+    src: "create.argocd-initial-admin-secret.yaml.j2"
+
+- name: Apply argocd admin secrets 2/2
+  become: true
+  become_user: "{{ ansible_ssh_user }}"
+  command: "kubectl apply -f /tmp/create.argocd-initial-admin-secret.yaml"
+
+- name: Apply argocd kustomization  1/2
+  copy:
+    src: argocd/
+    dest: /tmp/argocd
+
+- name: Apply argocd kustomization  2/2
+  become: true
+  become_user: "{{ ansible_ssh_user }}"
+  command: "kubectl apply -k /tmp/argocd"

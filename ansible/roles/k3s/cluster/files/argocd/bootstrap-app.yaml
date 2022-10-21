@@ -9,7 +9,7 @@ spec:
   source:
     path: argocd/application-definitions
     repoURL: 'https://github.com/Marcel-Lambacher/Masterloft.git'
-    targetRevision: HEAD
+    targetRevision: feature/proxmox-migration
   project: default
   syncPolicy:
     automated:

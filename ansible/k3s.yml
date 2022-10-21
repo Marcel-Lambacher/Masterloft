@@ -22,3 +22,15 @@
   - import_tasks: ./tasks/pre_tasks.yml
   post_tasks:
   - import_tasks: ./tasks/post_tasks.yml
+
+- name: Provision k3s cluster
+  hosts: k3smasters
+  gather_facts: no
+  become: yes
+  roles:
+    - role: k3s/cluster
+
+  pre_tasks:
+  - import_tasks: ./tasks/pre_tasks.yml
+  post_tasks:
+  - import_tasks: ./tasks/post_tasks.yml
