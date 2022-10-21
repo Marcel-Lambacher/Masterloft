@@ -3,7 +3,8 @@
   gather_facts: no
   become: yes
   roles:
-    - role: proxmox/cloud-init
+    # - role: proxmox/cloud-init
+    - role: proxmox/cluster
 
   pre_tasks:
   - import_tasks: ./tasks/pre_tasks.yml

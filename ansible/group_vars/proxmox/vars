@@ -5,3 +5,11 @@ ssh_private_key_pass: "{{ vault_ssh_private_key_pass }}"
 ssh_private_key_file: "{{ vault_ssh_private_key_file }}"
 ansible_sudo_pass: "{{ vault_ansible_sudo_pass }}"
 proxmox_cloud_init_password: "{{ vault_ansible_sudo_pass }}"
+
+proxmox_host: 192.168.178.28
+proxmox_password: "{{ vault_proxmox_password }}"
+proxmox_user: root@pam
+proxmox_node: pve
+
+k8s-master-cores: 4
+k8s-master-memory: 2048
