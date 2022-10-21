@@ -5,6 +5,7 @@
   delegate_to: 127.0.0.1
   become: no
   changed_when: no
+  ignore_errors: yes
 
 - name: "[POST] Delete temporary SSH key"
   file:

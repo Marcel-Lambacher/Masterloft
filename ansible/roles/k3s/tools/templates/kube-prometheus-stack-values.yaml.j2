@@ -1,0 +1,93 @@
+namespaceOverride: monitoring
+
+alertmanager:
+  resources:
+    requests:
+      cpu: 0m
+      memory: 0Mi
+
+grafana:
+  admin:
+    existingSecret: "grafana-admin-user"
+    userKey: admin-user
+    passwordKey: admin-password
+
+  ingress:
+    enabled: true
+    annotations:
+      kubernetes.io/ingress.class: traefik
+
+    hosts:
+      - grafana.masterloft.k8s.marcel-lambacher.de
+
+  additionalDataSources:
+    - name: Loki
+      access: proxy
+      type: loki
+      url: http://loki.logging.svc.cluster.local:3100
+
+prometheus:
+  resources:
+    requests:
+      cpu: 0m
+      memory: 0Mi
+
+  ingress:
+    enabled: true
+    annotations:
+      kubernetes.io/ingress.class: traefik
+      traefik.ingress.kubernetes.io/router.middlewares: authelia-forwardauth-authelia@kubernetescrd
+
+    hosts:
+      - prometheus.masterloft.k8s.marcel-lambacher.de
+
+    pathType: Prefix
+    paths:
+      - /
+
+prometheusOperator:
+  prometheusConfigReloader:
+    resources:
+      requests:
+        cpu: 0m
+        memory: 0Mi
+
+defaultRules:
+  rules:
+    etcd: false
+
+kubeApiServer:
+  enabled: true
+kubeControllerManager:
+  enabled: true
+  endpoints:
+    - 192.168.178.65
+  service:
+    enabled: true
+    port: 10257
+    targetPort: 10257
+  serviceMonitor:
+    enabled: true
+    https: true
+    insecureSkipVerify: true
+
+kubeScheduler:
+  enabled: true
+  endpoints:
+    - 192.168.178.65
+  service:
+    enabled: true
+    port: 10259
+    targetPort: 10259
+  serviceMonitor:
+    enabled: true
+    https: true
+    insecureSkipVerify: true
+
+kubeProxy:
+  enabled: true
+  endpoints:
+    - 192.168.178.65
+
+kubeEtcd:
+  enabled: false
