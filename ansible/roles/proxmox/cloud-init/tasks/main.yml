@@ -1,0 +1,33 @@
+---
+- name: Remove proxmox enterprise repo
+  file:
+    path: /etc/apt/sources.list.d/pve-enterprise.list
+    state: absent
+
+- name: Install virt-customize package
+  apt:
+    name: libguestfs-tools
+    state: present
+    update_cache: yes
+
+- name: Copy cloud-init scripts
+  become: true
+  become_user: "{{ ansible_ssh_user }}"
+  copy:
+    src: build/
+    dest: /home/marlam/cloud-init
+
+- name: Render build-vars from j2 template
+  template:
+    dest: /home/marlam/cloud-init/build-vars
+    src: "build-vars.j2"
+
+- name: Make build-image.sh executable
+  become: true
+  become_user: "{{ ansible_ssh_user }}"
+  file: dest=/home/marlam/cloud-init/build-image.sh mode=a+x
+
+- name: Build image (this might take a while)
+  command: sh ./build-image.sh
+  args:
+    chdir: /home/marlam/cloud-init

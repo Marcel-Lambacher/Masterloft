@@ -1,0 +1,31 @@
+---
+- set_fact:
+    k8smasters:
+    - k8s-master-0
+
+    k8snodes:
+    - k8s-node-0
+    - k8s-node-1
+    - k8s-node-2
+
+- name: "Provision k8s-masters"
+  include_tasks: create-vm.yml
+  loop: "{{ k8smasters }}"
+  loop_control:
+      loop_var: proxmox_vm_name
+  vars:
+    proxmox_vm_template: 9999
+    proxmox_vm_cores: 4
+    proxmox_vm_memory: 2048
+    proxmox_vm_disk_size: 20G
+
+- name: "Provision k8s-nodes"
+  include_tasks: create-vm.yml
+  loop: "{{ k8snodes }}"
+  loop_control:
+      loop_var: proxmox_vm_name
+  vars:
+    proxmox_vm_template: 9999
+    proxmox_vm_cores: 4
+    proxmox_vm_memory: 4096
+    proxmox_vm_disk_size: 20G
