@@ -1,5 +1,5 @@
 - name: Provision masterloft local cluster
-  hosts: k8s-masters
+  hosts: k3smasters
   gather_facts: no
   become: yes
   roles:

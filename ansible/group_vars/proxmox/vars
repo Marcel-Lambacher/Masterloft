@@ -11,5 +11,5 @@ proxmox_password: "{{ vault_proxmox_password }}"
 proxmox_user: root@pam
 proxmox_node: pve
 
-k8s-master-cores: 4
-k8s-master-memory: 2048
+k3smaster-cores: 4
+k3smaster-memory: 2048

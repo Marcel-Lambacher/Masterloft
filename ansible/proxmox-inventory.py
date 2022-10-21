@@ -16,21 +16,21 @@ class ProxmoxInventory(object):
         print(json.dumps(self.inventory))
 
     def add_master(self, ip) -> None:
-        self.inventory["k8s-masters"]["hosts"].append(ip)
+        self.inventory["k3smasters"]["hosts"].append(ip)
 
     def add_node(self, ip) -> None:
-        self.inventory["k8s-nodes"]["hosts"].append(ip)
+        self.inventory["k3snodes"]["hosts"].append(ip)
 
     def __get_default_inventory(self) -> Dict:
         return {
-            "k8s-masters": {
+            "k3smasters": {
                 "hosts": [],
                 "vars": {
                     "ansible_connection": "ssh",
                     "ansible_ssh_user": "marlam"
                 }
             },
-            "k8s-nodes": {
+            "k3snodes": {
                 "hosts": [],
                 "vars": {
                     "ansible_connection": "ssh",
@@ -89,10 +89,10 @@ os.environ["proxmox_node"] = "pve"
 inventory = ProxmoxInventory()
 
 client = ProxmoxClient()
-masters = client.get_vm_ips("k8s-master")
+masters = client.get_vm_ips("k3smaster")
 [inventory.add_master(master) for master in masters]
 
-nodes = client.get_vm_ips("k8s-node")
+nodes = client.get_vm_ips("k3snode")
 [inventory.add_node(node) for node in nodes]
 
 inventory.render_inventory()
