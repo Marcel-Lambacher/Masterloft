@@ -12,7 +12,7 @@ ingress:
     traefik.ingress.kubernetes.io/router.middlewares: pihole-strip-admin-path-prefix-middleware@kubernetescrd, pihole-redirect-admin-path-prefix-middleware@kubernetescrd
   path: /
   hosts:
-    - pihole.masterloft.k8s.marcel-lambacher.de
+    - pihole.cloud.lambacher.eu
 
 persistentVolumeClaim:
   enabled: ture

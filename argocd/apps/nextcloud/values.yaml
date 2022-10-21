@@ -8,7 +8,7 @@ lifecycle:
   postStartCommand: ["/bin/sh", "-c", "apt update && apt install -y smbclient libsmbclient-dev"]
 
 nextcloud:
-  host: nextcloud.masterloft.k8s.marcel-lambacher.de
+  host: nextcloud.cloud.lambacher.eu
   existingSecret:
     enabled: true
     secretName: nextcloud-admin-secret
@@ -19,7 +19,7 @@ nextcloud:
     traefik.config.php: |-
       <?php
       $CONFIG = array (
-        'overwrite.cli.url' => 'https://nextcloud.masterloft.k8s.marcel-lambacher.de',
+        'overwrite.cli.url' => 'https://nextcloud.cloud.lambacher.eu',
         'overwriteprotocol' => 'https'
       );
 

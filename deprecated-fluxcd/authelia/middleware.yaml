@@ -8,7 +8,7 @@ metadata:
     app.kubernetes.io/name: authelia
 spec:
   forwardAuth:
-    address: http://authelia.authelia.svc.cluster.local/api/verify?rd=https%3A%2F%2Fauth.masterloft.k8s.marcel-lambacher.de%2F
+    address: http://authelia.authelia.svc.cluster.local/api/verify?rd=https%3A%2F%2Fauth.cloud.lambacher.eu%2F
     authResponseHeaders:
       - Remote-User
       - Remote-Name

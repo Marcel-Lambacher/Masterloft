@@ -2,7 +2,7 @@
 192.168.178.65 ansible_connection=ssh ansible_ssh_user=marlam ansible_port=54543
 
 [masterloft-remote-tunnel]
-masterloft.k8s.marcel-lambacher.de ansible_connection=ssh ansible_ssh_user=marlam
+cloud.lambacher.eu ansible_connection=ssh ansible_ssh_user=marlam
 
 [proxmox]
 #proxmox.local.lambacher.eu ansible_connection=ssh ansible_ssh_user=marlam

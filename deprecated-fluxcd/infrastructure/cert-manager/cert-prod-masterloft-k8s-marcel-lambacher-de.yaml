@@ -5,11 +5,11 @@ metadata:
   name: masterloft-k8s-marcel-lambacher-de
   namespace: kube-system
 spec:
-  secretName: masterloft-k8s-marcel-lambacher-de-tls
+  secretName: cloud-lambacher-eu-tls
   issuerRef:
     name: letsencrypt-prod
     kind: ClusterIssuer
-  commonName: "*.masterloft.k8s.marcel-lambacher.de"
+  commonName: "*.cloud.lambacher.eu"
   dnsNames:
-  - "masterloft.k8s.marcel-lambacher.de"
-  - "*.masterloft.k8s.marcel-lambacher.de"
+  - "cloud.lambacher.eu"
+  - "*.cloud.lambacher.eu"

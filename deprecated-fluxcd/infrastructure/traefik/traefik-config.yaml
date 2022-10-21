@@ -17,7 +17,7 @@ spec:
         allowCrossNamespace: true
 
     volumes:
-      - name: masterloft-k8s-marcel-lambacher-de-tls
+      - name: cloud-lambacher-eu-tls
         mountPath: /certs
         type: secret
       - name: traefik-dynamic-config

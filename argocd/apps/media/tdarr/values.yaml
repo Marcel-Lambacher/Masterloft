@@ -18,7 +18,7 @@ ingress:
   annotations:
     kubernetes.io/ingress.class: traefik
     traefik.ingress.kubernetes.io/router.middlewares: authelia-forwardauth-authelia@kubernetescrd
-  host: tdarr.masterloft.k8s.marcel-lambacher.de
+  host: tdarr.cloud.lambacher.eu
   # TLS is deactived in ingress, since default cert of traefik will take care of it (TLS per default)
   tlsEnabled: false
 

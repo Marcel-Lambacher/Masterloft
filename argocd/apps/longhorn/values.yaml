@@ -9,4 +9,4 @@ ingress:
     kubernetes.io/ingress.class: traefik
     traefik.ingress.kubernetes.io/router.middlewares: authelia-forwardauth-authelia@kubernetescrd
 
-  host: longhorn.masterloft.k8s.marcel-lambacher.de
+  host: longhorn.cloud.lambacher.eu

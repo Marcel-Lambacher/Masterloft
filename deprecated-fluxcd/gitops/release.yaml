@@ -25,8 +25,8 @@ spec:
     oidcSecret:
       create: true
       clientID: cf9ff4de45354bcd8fc8f83c1fb932f9
-      issuerURL: https://auth.masterloft.k8s.marcel-lambacher.de
-      redirectURL: https://gitops.masterloft.k8s.marcel-lambacher.de/oauth2/callback
+      issuerURL: https://auth.cloud.lambacher.eu
+      redirectURL: https://gitops.cloud.lambacher.eu/oauth2/callback
     adminUser:
       create: true
       username: marlam
