@@ -4,6 +4,7 @@ namespace: argocd
 
 resources:
   - namespace.yaml
+  - create-argocd-initial-admin-secret.yaml
   - https://raw.githubusercontent.com/argoproj/argo-cd/v2.4.11/manifests/install.yaml
   - ingress.yaml
   - bootstrap-app.yaml

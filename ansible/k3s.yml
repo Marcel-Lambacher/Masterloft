@@ -1,27 +1,27 @@
-- name: Provision k3s master
-  hosts: k3smasters
-  gather_facts: no
-  become: yes
-  roles:
-    - role: k3s/master
-    - role: k3s/tools
+# - name: Provision k3s master
+#   hosts: k3smasters
+#   gather_facts: no
+#   become: yes
+#   roles:
+#     - role: k3s/master
+#     - role: k3s/tools
 
-  pre_tasks:
-  - import_tasks: ./tasks/pre_tasks.yml
-  post_tasks:
-  - import_tasks: ./tasks/post_tasks.yml
+#   pre_tasks:
+#   - import_tasks: ./tasks/pre_tasks.yml
+#   post_tasks:
+#   - import_tasks: ./tasks/post_tasks.yml
 
-- name: Provision k3s nodes
-  hosts: k3snodes
-  gather_facts: no
-  become: yes
-  roles:
-    - role: k3s/node
+# - name: Provision k3s nodes
+#   hosts: k3snodes
+#   gather_facts: no
+#   become: yes
+#   roles:
+#     - role: k3s/node
 
-  pre_tasks:
-  - import_tasks: ./tasks/pre_tasks.yml
-  post_tasks:
-  - import_tasks: ./tasks/post_tasks.yml
+#   pre_tasks:
+#   - import_tasks: ./tasks/pre_tasks.yml
+#   post_tasks:
+#   - import_tasks: ./tasks/post_tasks.yml
 
 - name: Provision k3s cluster
   hosts: k3smasters
