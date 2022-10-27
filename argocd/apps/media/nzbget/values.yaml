@@ -1,6 +1,6 @@
 image:
   repository: linuxserver/nzbget
-  tag: 21.1.20221020
+  tag: 21.1.20221027
 
 resources:
   ignore: true
