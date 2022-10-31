@@ -15,5 +15,5 @@ helmCharts:
   includeCRDs: false
   valuesFile: values.yaml
   releaseName: authelia
-  version: 0.8.45
+  version: 0.8.38
   repo: https://charts.authelia.com
