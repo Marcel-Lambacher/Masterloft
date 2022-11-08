@@ -1,6 +1,6 @@
 image:
   repository: linuxserver/prowlarr
-  tag: 0.4.7-develop
+  tag: 0.4.8-develop
 
 resources:
   ignore: true
