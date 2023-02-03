@@ -20,4 +20,4 @@ spec:
               key: digitalocean-token
         selector:
           dnsZones:
-            - "masterloft.k8s.marcel-lambacher.de"
+            - "cloud.lambacher.eu"

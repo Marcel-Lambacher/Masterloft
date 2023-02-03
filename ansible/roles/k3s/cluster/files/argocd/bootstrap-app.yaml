@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: bootstrap-app
+spec:
+  destination:
+    namespace: argocd
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: argocd/application-definitions
+    repoURL: 'https://github.com/Marcel-Lambacher/Masterloft.git'
+    targetRevision: feature/proxmox-migration
+  project: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

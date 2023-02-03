@@ -1,0 +1,73 @@
+---
+- name: Create {{ proxmox_vm_name }}
+  proxmox_kvm:
+    api_user: "{{ proxmox_user }}"
+    api_host: "{{ proxmox_host }}"
+    api_password: "{{ proxmox_password }}"
+    name: "{{ proxmox_vm_name }}"
+    node: "{{ proxmox_node }}"
+    storage: local-lvm
+    clone: debian-cloud
+    full: yes
+    vmid: "{{ proxmox_vm_template }}"
+    timeout: 90
+
+- name: Get VM {{ proxmox_vm_name }}
+  proxmox_kvm:
+    api_host: "{{ proxmox_host }}"
+    api_user: "{{ proxmox_user }}"
+    api_password: "{{ proxmox_password }}"
+    node: "{{ proxmox_node }}"
+    name: "{{ proxmox_vm_name }}"
+    state: current
+  register: result
+
+- name: Set VMID for {{ proxmox_vm_name }}
+  set_fact:
+    vmid: "{{ result.msg | regex_replace('.*vmid = ([1-9][0-9]{0,3}).*', '\\1') }}"
+
+- name: Proxmox API authentication
+  uri:
+    validate_certs: no
+    url: "https://{{ proxmox_host }}:8006/api2/json/access/ticket"
+    method: POST
+    body_format: form-urlencoded
+    body:
+      username: "{{ proxmox_user }}"
+      password: "{{ proxmox_password }}"
+  register: auth
+
+- name: Resize disk of {{ proxmox_vm_name }}
+  uri:
+    validate_certs: no
+    url: "https://{{ proxmox_host }}:8006/api2/json/nodes/{{ proxmox_node }}/qemu/{{ vmid }}/resize"
+    method: PUT
+    headers: 
+      Cookie: "PVEAuthCookie={{ auth.json.data.ticket }}"
+      CSRFPreventionToken: "{{ auth.json.data.CSRFPreventionToken }}"
+    body_format: form-urlencoded
+    body:
+      disk: scsi0
+      size: "{{ proxmox_vm_disk_size }}"
+
+- name: Configure hardware of {{ proxmox_vm_name }}
+  uri:
+    validate_certs: no
+    url: "https://{{ proxmox_host }}:8006/api2/json/nodes/{{ proxmox_node }}/qemu/{{ vmid }}/config"
+    method: PUT
+    headers: 
+      Cookie: "PVEAuthCookie={{ auth.json.data.ticket }}"
+      CSRFPreventionToken: "{{ auth.json.data.CSRFPreventionToken }}"
+    body_format: form-urlencoded
+    body:
+      cores: "{{ proxmox_vm_cores }}"
+      memory: "{{ proxmox_vm_memory }}"
+  
+- name: Start {{ proxmox_vm_name }}
+  proxmox_kvm:
+    api_host: "{{ proxmox_host }}"
+    api_user: "{{ proxmox_user }}"
+    api_password: "{{ proxmox_password }}"
+    node: "{{ proxmox_node }}"
+    name: "{{ proxmox_vm_name }}"
+    state: started

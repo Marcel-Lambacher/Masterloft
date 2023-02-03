@@ -8,7 +8,7 @@ metadata:
   namespace: gitops
 spec:
   rules:
-  - host: gitops.masterloft.k8s.marcel-lambacher.de
+  - host: gitops.cloud.lambacher.eu
     http:
       paths:
       - backend:
@@ -21,7 +21,7 @@ spec:
   # TLS is deactived in ingress, since default cert of traefik will take care of it (TLS per default)
   # tls:
   # - hosts:
-  #   - gitops.masterloft.k8s.marcel-lambacher.de
+  #   - gitops.cloud.lambacher.eu
 
 status:
   loadBalancer: {}

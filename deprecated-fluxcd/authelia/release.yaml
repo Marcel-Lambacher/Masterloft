@@ -50,7 +50,7 @@ spec:
           secret:
             secretName: authelia-users-database
 
-    domain: masterloft.k8s.marcel-lambacher.de
+    domain: cloud.lambacher.eu
 
     ingress:
       enabled: true
@@ -62,7 +62,7 @@ spec:
       # TLS is deactived in ingress, since default cert of traefik will take care of it (TLS per default)
       tls:
         enabled: false
-        # secret: masterloft-k8s-marcel-lambacher-de-tls
+        # secret: cloud-lambacher-eu-tls
 
     configMap:
       identity_providers:
@@ -88,7 +88,7 @@ spec:
                 - groups
                 - profile
               redirect_uris:
-                - https://gitops.masterloft.k8s.marcel-lambacher.de/oauth2/callback
+                - https://gitops.cloud.lambacher.eu/oauth2/callback
                 - https://openidconnect.net/callback
               # grant_types:
               #   - refresh_token

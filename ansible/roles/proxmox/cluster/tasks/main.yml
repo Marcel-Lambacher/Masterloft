@@ -1,0 +1,31 @@
+---
+- set_fact:
+    k3smasters:
+    - k3smaster-0
+
+    k3snodes:
+    - k3snode-0
+    - k3snode-1
+    - k3snode-2
+
+- name: "Provision k3smasters"
+  include_tasks: create-vm.yml
+  loop: "{{ k3smasters }}"
+  loop_control:
+      loop_var: proxmox_vm_name
+  vars:
+    proxmox_vm_template: 9999
+    proxmox_vm_cores: 4
+    proxmox_vm_memory: 2048
+    proxmox_vm_disk_size: 20G
+
+- name: "Provision k3snodes"
+  include_tasks: create-vm.yml
+  loop: "{{ k3snodes }}"
+  loop_control:
+      loop_var: proxmox_vm_name
+  vars:
+    proxmox_vm_template: 9999
+    proxmox_vm_cores: 4
+    proxmox_vm_memory: 4096
+    proxmox_vm_disk_size: 20G

@@ -9,7 +9,7 @@ metadata:
   namespace: podinfo
 spec:
   rules:
-  - host: podinfo.masterloft.k8s.marcel-lambacher.de
+  - host: podinfo.cloud.lambacher.eu
     http:
       paths:
       - backend:
@@ -22,7 +22,7 @@ spec:
   # TLS is deactived in ingress, since default cert of traefik will take care of it (TLS per default)
   # tls:
   # - hosts:
-  #   - podinfo.masterloft.k8s.marcel-lambacher.de
+  #   - podinfo.cloud.lambacher.eu
     
 status:
   loadBalancer: {}

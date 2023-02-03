@@ -1,0 +1,1 @@
+ansible-playbook -i hosts proxmox.yml --ask-vault-pass

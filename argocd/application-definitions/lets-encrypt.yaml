@@ -5,6 +5,8 @@ metadata:
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
 spec:
   destination:
     namespace: argocd
@@ -13,7 +15,7 @@ spec:
   source:
     path: argocd/apps/lets-encrypt
     repoURL: 'https://github.com/Marcel-Lambacher/Masterloft.git'
-    targetRevision: HEAD
+    targetRevision: feature/proxmox-migration
   syncPolicy:
     automated:
       prune: true

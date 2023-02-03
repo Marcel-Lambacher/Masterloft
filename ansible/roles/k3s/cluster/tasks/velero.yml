@@ -1,0 +1,24 @@
+---
+- name: Copy velero secrets file
+  template:
+    dest: /tmp/velero-secrets
+    src: "velero-secrets.j2"
+
+- name: Bootstrap velero
+  become: true
+  become_user: "{{ ansible_ssh_user }}"
+  command: |
+    velero install \
+        --provider azure \
+        --plugins velero/velero-plugin-for-microsoft-azure:v1.5.0 \
+        --bucket velero \
+        --secret-file /tmp/velero-secrets \
+        --backup-location-config resourceGroup={{ velero_azure_backup_account_resource_group }},storageAccount={{ velero_azure_backup_account_name }},storageAccountKeyEnvVar=AZURE_STORAGE_ACCOUNT_ACCESS_KEY,subscriptionId={{ velero_azure_backup_account_subscription }}] \
+        --use-volume-snapshots=false
+        --use-restic
+
+# - name: Restore from last backup 
+#   become: true
+#   become_user: "{{ ansible_ssh_user }}"
+#   command: |
+#     velero restore create --from-backup {{ velero_last_backup_name }}

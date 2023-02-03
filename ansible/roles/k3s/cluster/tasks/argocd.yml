@@ -1,0 +1,19 @@
+---
+
+- name: Ensures /tmp/argocd dir exists
+  file: path=/tmp/argocd state=directory
+
+- name: Apply argocd admin secrets  
+  template:
+    dest: /tmp/argocd/create-argocd-initial-admin-secret.yaml
+    src: "create-argocd-initial-admin-secret.yaml.j2"
+
+- name: Apply argocd kustomization  1/2
+  copy:
+    src: argocd/
+    dest: /tmp/argocd
+
+- name: Apply argocd kustomization  2/2
+  become: true
+  become_user: "{{ ansible_ssh_user }}"
+  command: "kubectl apply -k /tmp/argocd"
