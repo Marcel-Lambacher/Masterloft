@@ -13,5 +13,5 @@ helmCharts:
   includeCRDs: false
   valuesFile: values.yaml
   releaseName: mariadb
-  version: 11.4.0
+  version: 11.5.7
   repo: https://charts.bitnami.com/bitnami
