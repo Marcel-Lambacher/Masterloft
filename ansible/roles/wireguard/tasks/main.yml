@@ -7,7 +7,7 @@
     update_cache: yes
 
 - name: enable and persist ip forwarding
-  when: inventory_hostname in groups['masterloft-remote-tunnel']
+  when: inventory_hostname in groups['masterloft-node-cloud']
   sysctl:
     name: net.ipv4.ip_forward
     value: "1"

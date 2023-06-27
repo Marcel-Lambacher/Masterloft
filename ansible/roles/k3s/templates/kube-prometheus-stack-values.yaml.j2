@@ -18,7 +18,7 @@ grafana:
       kubernetes.io/ingress.class: traefik
 
     hosts:
-      - grafana.masterloft.k8s.marcel-lambacher.de
+      - grafana.cloud.lambacher.eu
 
   additionalDataSources:
     - name: Loki
@@ -39,7 +39,7 @@ prometheus:
       traefik.ingress.kubernetes.io/router.middlewares: authelia-forwardauth-authelia@kubernetescrd
 
     hosts:
-      - prometheus.masterloft.k8s.marcel-lambacher.de
+      - prometheus.cloud.lambacher.eu
 
     pathType: Prefix
     paths:

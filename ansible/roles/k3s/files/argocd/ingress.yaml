@@ -9,7 +9,7 @@ metadata:
   namespace: argocd
 spec:
   rules:
-  - host: argocd.masterloft.k8s.marcel-lambacher.de
+  - host: argocd.cloud.lambacher.eu
     http:
       paths:
       - backend:
@@ -21,7 +21,7 @@ spec:
         pathType: Prefix
   tls:
   - hosts:
-    - argocd.masterloft.k8s.marcel-lambacher.de
+    - argocd.cloud.lambacher.eu
 
 status:
   loadBalancer: {}

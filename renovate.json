@@ -9,7 +9,7 @@
   ],
   "regexManagers": [
     {
-      "fileMatch": ["^ansible/group_vars/masterloft-local-cluster/vars$"],
+      "fileMatch": ["^ansible/group_vars/masterloft-node-local/vars$"],
       "matchStrings": ["version: (?<currentValue>.*) # renovate: depName=(?<depName>.*)"],
       "datasourceTemplate": "github-releases"
     }
