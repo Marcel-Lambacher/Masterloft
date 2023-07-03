@@ -1,25 +1,10 @@
 config:
-  azure-native:location: westeurope
-  masterloft.tunnel:azure.env: prod
-  masterloft.tunnel:azure.region-short: euwe
-  masterloft.tunnel:azure.workload: masterloft-tunnel
-  masterloft.tunnel:azure.workload-short: mltunnel
-  masterloft.tunnel:vm.inbound-network-rules:
-  - name: allow-inbound-ssh
-    portRange: "22"
-    priority: 1000
-  - name: allow-inbound-http
-    portRange: "80"
-    priority: 1010
-  - name: allow-inbound-https
-    portRange: "443"
-    priority: 1020
-  - name: allow-inbound-wireguard
-    portRange: "55107"
-    priority: 1030
-  masterloft.tunnel:vm.password:
-    secure: AAABAINcZCFEstAKA5IrvSUz0QT3fTLt9phqyUfbMlpaXxOr/xCWKY262+ge25pJeRqsz9kSs5hbT2c2BzI5tUZpCzNxddZL
-  masterloft.tunnel:vm.size: Standard_B1s
-  masterloft.tunnel:vm.ssh-public-key:
-    secure: AAABAEo//w2NuB9UVWb04INp41fr/6sqfzDKIkX/hYPnZ3SE4hQO5a6JbdWoQLOs5ONOBbCJDauThgIPLBUfj7y9zdwHlJNdJW9DW0LayTI76FXah7zqhq6IwWV/aFkQne2ZnXseVt+6afYcO9YYUEKbQduzS/9aGdgXtp1JVeFkpP3NYBY0iMJj1BpYCfbjVg7X8DR3CmsN4yHTEiRMCuQaJNDVgxu2C9nY+wqOgXK8hjTgpcTTpvrCvm8iW44Rjdmtl7yaEAnwpsl8/GSKT0ZrNa/lb8IrRoMD7273iSlwE0Z0Su+tenlhN6yQ55h9vOCpe+BKNabvqSl2D+LiR8tzKyc/w+Z1IbxkvpNdu6nS0rASzCIMYd4yr8nOmdh94nIf1UhEDb/1vdzShbxz3NqdbhwxmcJCSVLv0yienfuvZOJy3+P1/EWsHyfbfGrVq5IeemsGGkFFGfvU6oDuOMWDikkLXOVSzZk3+2eHRPfZBeDSJow+3ulGzJF8m4Qy4k8DaSigjng20oTWWvVnijN/DYktONwszYZfnOPmSc8TWCjadx1IJim/X8s9hyycfQlmN98KibGVFcPvoPRuzwmzlugqZ7lHDltc8w1tmRRqlOd0Rd2RgBSLAfR8VBAce7/5Asjh7RgReJBDURMM5G/Dab1edgTGeUxPcrnLV/IVMp/5F4IpN2aM3YjTWK5BcAkD8AXKNhmUEMVi7Rc/sOp0FZmtyU1FC5hg1+GyX3y87hWjA7JhL7n5yNX59QYN60ilnsVOkPBUroj1uRpnHNPS6fwMVssw0Asl6vCP5VHwxtOEVIRc8ZAQZPEN4ZLwMBTtgf5FMIU2kRFXBu2PmYIgE45sKf1anaQ4Xe2sajpE+0riuxC/1a4OaSaoaQafPhVWRG3xPQ2QtmrkODxa0UNcVk/MAySLB1aTOOVLNdv/w1W4RWM8sZRc/mT4Q/SI5giGpIqGbkN4+UO46siWzLPWKsAcMUalkaUHfg8usSU2HNkY1o7q6kC4sh6O7Cq3MldMfy6bWw==
-  masterloft.tunnel:vm.username: marlam
+  Masterloft:defaultSSHKey:
+    secure: AAABACdRSQGpWwJj5VmO/qZX/qlNjl3PjjBV6tKTGjHyPV+VBjCZWv9P47bEsvFpD5x9j0xk2u9IrvQ7eOnof7WG5MhUA10CrDXE9r1K5olcIBvbXGfy5Z/FfbJ13L4fSjKWc3rF5C7dnaGGDGn0X7CNT5jASMw=
+  Masterloft:publicDomain: cloud.lambacher.eu
+  digitalocean:apiEndpoint: https://api.digitalocean.com
+  digitalocean:token:
+    secure: AAABABU1AZlfBjR1wX7hncxt6sK4XX29RmZa4oYj19kYy3VrHqya1Nh3M6dJZwVj9iqahA52qiE+iHnEIe5w0kWdMdfrHtG5MowI7xmm+9v4CwRDGH5yXYp9iKT6Vu4Qz6QE+7mXBA==
+  hcloud:endpoint: https://api.hetzner.cloud/v1
+  hcloud:token:
+    secure: AAABACXSLAUihSlV5x6QsMjCw2taMWvcGGx132HXiVUlOCCGdZeFOBkkaU/sRqxWefDhtVm4HwXqX7TGcAyfYdMFKGN0p3zABRRjvVffM7OQF2Z5Oyp//2tMNMBedZnP

@@ -13,7 +13,6 @@
         "forceConsistentCasingInFileNames": true
     },
     "files": [
-        "src/index.ts",
-        "src/tunnelVmProvisioner.ts"
+        "index.ts"
     ]
 }
