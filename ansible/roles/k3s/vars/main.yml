@@ -1,0 +1,10 @@
+k3s_version: v1.27.3+k3s1 # renovate: depName=k3s-io/k3s
+k3s_amd_checksum: sha256:ee130a125683a2e588a1f92c144b927a184c209adb59c0fdc6930822b07b4c90
+k3s_arm_checksum: sha256:00e6ee3700c41d3f375902df721c68abcb71782cf4c3f600214839e34e77395e
+
+kubectl_version: v1.27.3
+kubectl_amd_checksum: sha256:fba6c062e754a120bc8105cde1344de200452fe014a8759e06e4eec7ed258a09
+kubectl_arm_checksum: sha256:7bb7fec4e28e0b50b603d64e47629e812408751bd1e0ce059b2fee83b0e3ff6f
+
+helm_version: v3.9.4
+helm_checksum: sha256:31960ff2f76a7379d9bac526ddf889fb79241191f1dbe2a24f7864ddcb3f6560

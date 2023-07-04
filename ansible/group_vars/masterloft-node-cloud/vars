@@ -1,6 +1,8 @@
 ---
-ssh_username: marlam
-
+# SSH
 ssh_private_key_pass: "{{ vault_ssh_private_key_pass }}"
 ssh_private_key_file: "{{ vault_ssh_private_key_file }}"
-wireguard_private_key: "{{ vault_wireguard_private_key }}"
+
+# Wireguard
+wireguard_cloud_private_key: "{{ vault_wireguard_cloud_private_key }}"
+wireguard_local_public_key: "{{ vault_wireguard_local_public_key }}"

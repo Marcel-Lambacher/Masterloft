@@ -1,5 +1,5 @@
 [masterloft-node-local]
-192.168.178.65 ansible_connection=ssh ansible_ssh_user=marlam ansible_port=54543
+192.168.178.65 ansible_connection=ssh ansible_ssh_user=ansible ansible_port=22
 
 [masterloft-node-cloud]
-cloud.lambacher.eu ansible_connection=ssh ansible_ssh_user=marlam
+cloud.lambacher.eu ansible_connection=ssh ansible_ssh_user=ansible ansible_port=31719

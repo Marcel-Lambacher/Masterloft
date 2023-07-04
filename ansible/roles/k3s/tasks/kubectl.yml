@@ -1,20 +1,22 @@
 ---
-- name: Download kubectl binary
-  ansible.builtin.get_url:
-    url: "https://storage.googleapis.com/kubernetes-release/release/{{ kubectl_version }}/bin/linux/amd64/kubectl"
-    checksum: "{{ kubectl_checksum }}"
-    dest: "/tmp"
-    mode: 0600
-  tags:
-    - kubectl
 
-- name: Copy kubectl binary to destination directory
-  ansible.builtin.copy:
-    src: "/tmp/{{ item }}"
-    dest: "/usr/local/bin/{{ item }}"
-    mode: "0755"
-    owner: "root"
-    group: "root"
-    remote_src: true
-  with_items:
-    - kubectl
+- name: Initialize kubectl_download_url
+  set_fact:
+    kubectl_download_url: https://storage.googleapis.com/kubernetes-release/release/{{ kubectl_version }}/bin/linux/arm64/kubectl
+    kubectl_checksum: "{{ kubectl_arm_checksum }}"
+  when: ansible_architecture == 'aarch64'
+
+- name: Initialize kubectl_download_url
+  set_fact:
+    kubectl_download_url: https://storage.googleapis.com/kubernetes-release/release/{{ kubectl_version }}/bin/linux/amd64/kubectl
+    kubectl_checksum: "{{ kubectl_amd_checksum }}"
+  when: ansible_architecture == 'x86_64'
+
+- name: Install kubctl
+  get_url:                                                           
+      url: "{{ kubectl_download_url }}"
+      dest: /usr/local/bin/kubectl
+      owner: root
+      group: root
+      mode: 755
+      checksum: "{{ kubectl_checksum }}"

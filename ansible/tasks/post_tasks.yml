@@ -3,7 +3,7 @@
 - name: "[POST] Lock SSH key"
   command: ssh-add -d /tmp/masterloft.cluster
   delegate_to: 127.0.0.1
-  become: no
+  become: false
   changed_when: no
 
 - name: "[POST] Delete temporary SSH key"

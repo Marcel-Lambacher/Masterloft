@@ -11,6 +11,7 @@ function createFirewall(): hcloud.Firewall {
             direction: "in",
             protocol: "tcp",
             port: "80",
+            description: "HTTP",
             sourceIps: [
                 "0.0.0.0/0",
                 "::/0",
@@ -20,6 +21,7 @@ function createFirewall(): hcloud.Firewall {
             direction: "in",
             protocol: "tcp",
             port: "443",
+            description: "HTTPS",
             sourceIps: [
                 "0.0.0.0/0",
                 "::/0",
@@ -28,7 +30,18 @@ function createFirewall(): hcloud.Firewall {
         {
             direction: "in",
             protocol: "tcp",
-            port: "22",
+            port: "31719",
+            description: "SSH",
+            sourceIps: [
+                "0.0.0.0/0",
+                "::/0",
+            ],
+        },
+        {
+            direction: "in",
+            protocol: "tcp",
+            port: "51871",
+            description: "Wireguard",
             sourceIps: [
                 "0.0.0.0/0",
                 "::/0",
@@ -47,6 +60,7 @@ export function provisionMasterNode(config: pulumi.Config): hcloud.Server {
         location: "fsn1",
         firewallIds: [ fireWall.id.apply(id => parseInt(id)) ],
         sshKeys: [ sshKey.id ],
+        userData: config.requireSecret("cloudInit"),
         publicNets: [
             {
                 ipv4Enabled: true,

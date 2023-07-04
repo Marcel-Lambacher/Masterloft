@@ -1,24 +1,25 @@
-- name: Provision masterloft local cluster
-  hosts: masterloft-node-local
-  gather_facts: no
-  become: yes
-  roles:
-    - role: wireguard
-      wireguard_config_template_path: 'masterloft-node-local/wg0.conf.j2'
-    - role: k3s
+# - name: Provision masterloft local cluster
+#   hosts: masterloft-node-local
+#   gather_facts: false
+#   become: true
+#   roles:
+#     - role: wireguard
+#       wireguard_config_template_path: 'masterloft-node-local/wg0.conf.j2'
+#     - role: k3s
 
-  pre_tasks:
-  - import_tasks: ./tasks/pre_tasks.yml
-  post_tasks:
-  - import_tasks: ./tasks/post_tasks.yml
+#   pre_tasks:
+#   - import_tasks: ./tasks/pre_tasks.yml
+#   post_tasks:
+#   - import_tasks: ./tasks/post_tasks.yml
 
-- name: Provision masterloft remote tunnel
+- name: Provision node cloud
   hosts: masterloft-node-cloud
-  gather_facts: no
-  become: yes
+  gather_facts: false
+  become: true
   roles:
     - role: wireguard
       wireguard_config_template_path: 'masterloft-node-cloud/wg0.conf.j2'
+    - role: k3s
 
   pre_tasks:
   - import_tasks: ./tasks/pre_tasks.yml

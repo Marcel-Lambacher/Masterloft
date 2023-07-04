@@ -22,18 +22,9 @@
     owner: root
     group: root
     mode: '0600'
-  # notify: reload wireguard config
 
 - name: start wireguard and enable on boot
   systemd:
     name: wg-quick@wg0
     enabled: yes
     state: started
-
-# handlers:
-# # Reloads config without disrupting current peer sessions, but does not
-# # re-run PostUp commands. Notify this handler on server config changes.
-# - name: reload wireguard config
-#   shell: wg syncconf wg0 <(wg-quick strip wg0)
-#   args:
-#     executable: /bin/bash
