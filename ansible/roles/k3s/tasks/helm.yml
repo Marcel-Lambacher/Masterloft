@@ -10,15 +10,6 @@
     validate_certs: yes
     mode: 'u=rw,go=r'
 
-- name: create the Helm installation dir
-  become: true
-  file:
-    state: directory
-    owner: root
-    group: root
-    mode: 'u=rwx,go=rx'
-    dest: '/usr/local/share/helm'
-
 - name: install unarchive module dependencies (apt, yum, dnf, zypper)
   become: true
   package:

@@ -1,0 +1,2 @@
+sealed_secrets_certificate: "{{ vault_sealed_secrets_certificate }}"
+sealed_secrets_private_key: "{{ vault_sealed_secrets_private_key }}"

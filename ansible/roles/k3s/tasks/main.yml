@@ -3,7 +3,9 @@
 - include_tasks: install.yml
 - include_tasks: kubectl.yml
 - include_tasks: helm.yml
-# - include_tasks: sealed-secrets.yml
+- include_tasks: sealed-secrets.yml
+- include_tasks: cert-manager.yml
+
 # - include_tasks: velero.yml
 
 # # FluxCD is deprecated and won't be used anymore
