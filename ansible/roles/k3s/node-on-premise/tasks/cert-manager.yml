@@ -11,7 +11,7 @@
     src: "{{ item }}"
     dest: /tmp/cert-manager/{{ item | basename | regex_replace('\.j2$', '') }}
   with_fileglob:
-    - ../templates/cert-manager/*.*
+    - ./templates/cert-manager/*.*
 
 - name: Apply cert-manager
   become: true

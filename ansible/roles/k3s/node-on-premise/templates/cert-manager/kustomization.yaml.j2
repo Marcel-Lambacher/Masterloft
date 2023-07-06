@@ -7,3 +7,19 @@ resources:
   - cloud-lambacher-eu-tls.yaml
   - traefik-dynamic-config-map.yaml
   - traefik-config.yaml
+
+patches:
+  - patch: |-
+      kind: not-important
+      metadata:
+        name: not-important
+      spec:
+        template:
+          spec:
+            tolerations:
+            - key: "host"
+              operator: "Equal"
+              value: "onpremise"
+              effect: "NoSchedule"
+    target:
+      kind: (StatefulSet|Deployment|Job)
