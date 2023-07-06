@@ -56,12 +56,18 @@
     state: directory
     owner: "{{ ansible_user }}"
 
-# - name: Copy config file to user home directory
-#   copy:
-#     src: /etc/rancher/k3s/k3s.yaml
-#     dest: /home/{{ ansible_user }}/.kube/config
-#     remote_src: yes
-#     owner: "{{ ansible_user }}"
+- name: Copy config file to user home directory
+  copy:
+    dest: /home/{{ ansible_user }}/.kube/config
+    content: "{{ hostvars[groups['masterloft-node-cloud'][0]].kubeConfig | b64decode }}"
+    remote_src: yes
+    owner: "{{ ansible_user }}"
+
+- name: Replace kubernetes hostname
+  ansible.builtin.replace:
+    path: /home/{{ ansible_user }}/.kube/config
+    regexp: '127.0.0.1'
+    replace: '10.222.0.1'
 
 - name: Taint worker node
   become: true

@@ -100,6 +100,15 @@
     remote_src: yes
     owner: "{{ ansible_user }}"
 
+- name: Read kube config
+  slurp:
+    src: /home/{{ ansible_user }}/.kube/config
+  register: kubeConfig
+
+- name: Store kube config
+  set_fact: 
+    kubeConfig: "{{ kubeConfig.content }}"
+
 - name: Taint master node
   become: true
   become_user: "{{ ansible_ssh_user }}"
