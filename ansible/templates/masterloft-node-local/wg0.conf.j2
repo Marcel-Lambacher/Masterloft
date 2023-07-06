@@ -1,10 +1,10 @@
-[Interface]
-PrivateKey = {{ wireguard_private_key }}
-ListenPort = 51871
-Address = 10.222.0.101/32
 
+[Interface]
+Address = 10.222.0.101/32
+PrivateKey = {{ wireguard_local_private_key }}
+ 
 [Peer]
-PublicKey = DEJ2S/LG3BHJyXmaxNVzj0W7CjshOzrAxqoW+LAXuSo=
-Endpoint = 192.0.2.20:51871
+PublicKey = {{ wireguard_cloud_public_key }}
+Endpoint = cloud.lambacher.eu:51871
 AllowedIPs = 10.222.0.0/24
 PersistentKeepalive = 29

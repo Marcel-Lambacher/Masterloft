@@ -4,7 +4,7 @@ kind: Kustomization
 resources:
   - namespace.yaml
   - sealed-initial-admin-secret.yaml
-  - https://raw.githubusercontent.com/argoproj/argo-cd/v2.4.11/manifests/install.yaml
+  - https://raw.githubusercontent.com/argoproj/argo-cd/{{ argocd_version }}/manifests/install.yaml
   - ingress.yaml
   - bootstrap-app.yaml
 

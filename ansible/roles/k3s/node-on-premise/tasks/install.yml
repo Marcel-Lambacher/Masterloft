@@ -1,0 +1,69 @@
+---
+- name: Download k3s binary x64
+  get_url:                                                           
+      url: https://github.com/k3s-io/k3s/releases/download/{{ k3s_version }}/k3s
+      dest: /usr/local/bin/k3s
+      owner: root
+      group: root
+      mode: 755
+      checksum: "{{ k3s_checksum }}"
+
+- name: Copy K3s service file
+  register: k3s_service
+  template:
+    src: "k3s/k3s.service.j2"
+    dest: "/etc/systemd/system/k3s.service"
+    owner: root
+    group: root
+    mode: 0755
+
+- name: Ensure K3s config directory exists
+  file: 
+    path: "/etc/rancher/k3s"
+    state: directory
+
+- name: Install apparmor userland
+  ansible.builtin.apt:
+    name: apparmor
+    update_cache: yes
+
+- name: Install apparmor userland
+  ansible.builtin.apt:
+    name: apparmor-utils
+
+- name: Install open-iscsi
+  ansible.builtin.apt:
+    name: open-iscsi
+
+- name: Increae mfs.inotify.max_user_instances
+  sysctl:
+    name: fs.inotify.max_user_instances
+    value: "12288"
+    state: present
+    sysctl_set: yes
+    reload: yes
+
+- name: Enable and check K3s service
+  systemd:
+    name: k3s
+    daemon_reload: yes
+    state: restarted
+    enabled: yes
+
+- name: Create directory .kube
+  file:
+    path: /home/{{ ansible_user }}/.kube
+    state: directory
+    owner: "{{ ansible_user }}"
+
+# - name: Copy config file to user home directory
+#   copy:
+#     src: /etc/rancher/k3s/k3s.yaml
+#     dest: /home/{{ ansible_user }}/.kube/config
+#     remote_src: yes
+#     owner: "{{ ansible_user }}"
+
+- name: Taint worker node
+  become: true
+  become_user: "{{ ansible_ssh_user }}"
+  command: "kubectl taint nodes k8s-onpremise-01 host=onpremise:NoSchedule --overwrite=true"

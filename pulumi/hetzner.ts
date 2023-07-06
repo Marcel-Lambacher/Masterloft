@@ -39,7 +39,7 @@ function createFirewall(): hcloud.Firewall {
         },
         {
             direction: "in",
-            protocol: "tcp",
+            protocol: "udp",
             port: "51871",
             description: "Wireguard",
             sourceIps: [
@@ -57,7 +57,7 @@ export function provisionMasterNode(config: pulumi.Config): hcloud.Server {
     return new hcloud.Server("k8s-master-01", {
         serverType: "cpx11",
         image: "ubuntu-22.04",
-        location: "fsn1",
+        location: "nbg1",
         firewallIds: [ fireWall.id.apply(id => parseInt(id)) ],
         sshKeys: [ sshKey.id ],
         userData: config.requireSecret("cloudInit"),
