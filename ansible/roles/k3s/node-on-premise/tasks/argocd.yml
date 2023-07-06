@@ -1,0 +1,23 @@
+---
+
+- name: Create temp argocd directory
+  file:
+    path: '/tmp/argocd'
+    state: directory
+    mode: 0755
+
+- name: Copy argocd templates
+  template:
+    src: "{{ item }}"
+    dest: /tmp/argocd/{{ item | basename | regex_replace('\.j2$', '') }}
+  with_fileglob:
+    - ../templates/argocd/*.*
+
+- name: Apply argocd
+  become: true
+  become_user: "{{ ansible_ssh_user }}"
+  command: "kubectl apply -k /tmp/argocd"
+  retries: 3
+  delay: 10
+  register: result
+  until: result.rc == 0

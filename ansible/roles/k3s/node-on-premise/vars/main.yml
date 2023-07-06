@@ -1,0 +1,5 @@
+sealed_secrets_version: v0.22.0 # renovate: depName=bitnami-labs/sealed-secrets
+
+cert_manager_version: v1.12.2 # renovate: depName=cert-manager/cert-manager
+
+argocd_version: v2.7.6 # renovate: depName=argoproj/argo-cd

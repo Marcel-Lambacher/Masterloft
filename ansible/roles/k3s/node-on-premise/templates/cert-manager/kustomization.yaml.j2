@@ -1,0 +1,9 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - sealed-digitalocean-token-secret.json
+  - https://github.com/cert-manager/cert-manager/releases/download/{{ cert_manager_version }}/cert-manager.yaml
+  - issuer-letsencrypt-prod.yaml
+  - cloud-lambacher-eu-tls.yaml
+  - traefik-dynamic-config-map.yaml
+  - traefik-config.yaml

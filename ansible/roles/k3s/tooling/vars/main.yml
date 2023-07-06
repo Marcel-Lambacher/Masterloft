@@ -9,7 +9,3 @@ helm_checksum: sha256:1a7074f58ef7190f74ce6db5db0b70e355a655e2013c4d5db2317e63fa
 
 sealed_secrets_version: v0.22.0 # renovate: depName=bitnami-labs/sealed-secrets
 sealed_secrets_checksum: sha256:1165253730cd5682de8e011fb09302f5590a7a2cd573c95a66968c2c4dbd01a3
-
-cert_manager_version: v1.12.2 # renovate: depName=cert-manager/cert-manager
-
-argocd_version: v2.7.6 # renovate: depName=argoproj/argo-cd

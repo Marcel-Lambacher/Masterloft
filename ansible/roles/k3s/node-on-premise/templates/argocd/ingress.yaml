@@ -1,0 +1,27 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+  name: argocd-ui-ingress
+  namespace: argocd
+spec:
+  ingressClassName: traefik
+  rules:
+  - host: argocd.cloud.lambacher.eu
+    http:
+      paths:
+      - backend:
+          service:
+            name: argocd-server
+            port:
+              name: http
+        path: /
+        pathType: Prefix
+  tls:
+  - hosts:
+    - argocd.cloud.lambacher.eu
+
+status:
+  loadBalancer: {}

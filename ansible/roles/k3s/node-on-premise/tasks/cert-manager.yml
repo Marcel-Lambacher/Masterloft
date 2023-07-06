@@ -1,0 +1,23 @@
+---
+
+- name: Create temp cert-manager directory
+  file:
+    path: '/tmp/cert-manager'
+    state: directory
+    mode: 0755
+
+- name: Copy cert-manager templates
+  template:
+    src: "{{ item }}"
+    dest: /tmp/cert-manager/{{ item | basename | regex_replace('\.j2$', '') }}
+  with_fileglob:
+    - ../templates/cert-manager/*.*
+
+- name: Apply cert-manager
+  become: true
+  become_user: "{{ ansible_ssh_user }}"
+  command: "kubectl apply -k /tmp/cert-manager"
+  retries: 3
+  delay: 10
+  register: result
+  until: result.rc == 0

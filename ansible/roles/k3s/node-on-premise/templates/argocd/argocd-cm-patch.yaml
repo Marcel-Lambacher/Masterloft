@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-cm
+data:
+  # enables a kustomization option that can work with remote helm repos
+  kustomize.buildOptions: --enable-helm
