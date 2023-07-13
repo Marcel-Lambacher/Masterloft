@@ -69,7 +69,12 @@
     regexp: '127.0.0.1'
     replace: '10.222.0.1'
 
-- name: Taint worker node
+- name: Copy node patch
+  template:
+    src: "node-patch.yaml"
+    dest: "/tmp/node-patch.yaml"
+
+- name: Patch node labels
   become: true
   become_user: "{{ ansible_ssh_user }}"
-  command: "kubectl taint nodes k8s-onpremise-01 host=onpremise:NoSchedule --overwrite=true"
+  command: " kubectl patch nodes k8s-master-01 --type JSON --patch-file /tmp/node-patch.yaml"

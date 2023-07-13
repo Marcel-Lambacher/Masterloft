@@ -16,10 +16,8 @@ patches:
       spec:
         template:
           spec:
-            tolerations:
-            - key: "host"
-              operator: "Equal"
-              value: "onpremise"
-              effect: "NoSchedule"
+            nodeSelector:
+              cloud.lambacher.eu/location: onpremise
+
     target:
       kind: (StatefulSet|Deployment|Job)

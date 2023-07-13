@@ -10,3 +10,16 @@ helmCharts:
   includeCRDs: false
   releaseName: podinfo
   repo: https://stefanprodan.github.io/podinfo
+
+patches:
+  - patch: |-
+      kind: not-important
+      metadata:
+        name: not-important
+      spec:
+        template:
+          spec:
+            nodeSelector:
+              cloud.lambacher.eu/location: onpremise
+    target:
+      kind: (StatefulSet|Deployment|Job|Pod)

@@ -17,5 +17,16 @@ patches:
     target:
       kind: ConfigMap
       name: argocd-cm
+  - patch: |-
+      kind: not-important
+      metadata:
+        name: not-important
+      spec:
+        template:
+          spec:
+            nodeSelector:
+              cloud.lambacher.eu/location: onpremise
+    target:
+      kind: (StatefulSet|Deployment|Job|Pod)
 
 namespace: argocd
