@@ -109,12 +109,12 @@
   set_fact: 
     kubeConfig: "{{ kubeConfig.content }}"
 
-- name: Copy node patch
-  template:
-    src: "node-patch.yaml"
-    dest: "/tmp/node-patch.yaml"
+- name: Patch node taint
+  become: true
+  become_user: "{{ ansible_ssh_user }}"
+  command: "kubectl taint nodes k8s-master-01 cloud.lambacher.eu/location=cloud:NoSchedule --overwrite=true"
 
 - name: Patch node labels
   become: true
   become_user: "{{ ansible_ssh_user }}"
-  command: " kubectl patch nodes k8s-master-01 --type JSON --patch-file /tmp/node-patch.yaml"
+  command: "kubectl label nodes k8s-master-01 cloud.lambacher.eu/location=cloud --overwrite=true"

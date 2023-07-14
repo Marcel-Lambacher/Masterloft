@@ -1,3 +1,0 @@
-- op: add
-  path: /metadata/labels/cloud.lambacher.eu~1location
-  value: cloud

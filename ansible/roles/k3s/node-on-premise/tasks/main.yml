@@ -1,7 +1,7 @@
 ---
 
-- include_tasks: install.yml
+# - include_tasks: install.yml
 
-- include_tasks: sealed-secrets.yml
-- include_tasks: cert-manager.yml
+# - include_tasks: sealed-secrets.yml
+# - include_tasks: cert-manager.yml
 - include_tasks: argocd.yml

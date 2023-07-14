@@ -9,15 +9,27 @@ resources:
   - traefik-config.yaml
 
 patches:
-  - patch: |-
+  - target:
+      kind: (StatefulSet|Deployment|Job|Pod)
+    patch: |-
       kind: not-important
       metadata:
         name: not-important
       spec:
         template:
           spec:
-            nodeSelector:
-              cloud.lambacher.eu/location: onpremise
+            tolerations:
+            - key: "cloud.lambacher.eu/location"
+              value: "onpremise"
+              operator: "Equal"
+              effect: "NoSchedule"
 
-    target:
-      kind: (StatefulSet|Deployment|Job)
+            affinity:
+              nodeAffinity:
+                requiredDuringSchedulingIgnoredDuringExecution:
+                  nodeSelectorTerms:
+                  - matchExpressions:
+                    - key: cloud.lambacher.eu/location
+                      operator: In
+                      values:
+                      - onpremise

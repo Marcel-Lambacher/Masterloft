@@ -13,7 +13,7 @@ spec:
   source:
     path: argocd/apps/longhorn
     repoURL: 'https://github.com/Marcel-Lambacher/Masterloft.git'
-    targetRevision: HEAD
+    targetRevision: feature/wireguard-mesh
   syncPolicy:
     automated:
       prune: true
