@@ -5,6 +5,9 @@ config:
     secure: AAABACdRSQGpWwJj5VmO/qZX/qlNjl3PjjBV6tKTGjHyPV+VBjCZWv9P47bEsvFpD5x9j0xk2u9IrvQ7eOnof7WG5MhUA10CrDXE9r1K5olcIBvbXGfy5Z/FfbJ13L4fSjKWc3rF5C7dnaGGDGn0X7CNT5jASMw=
   Masterloft:publicDomain: cloud.lambacher.eu
   digitalocean:apiEndpoint: https://api.digitalocean.com
+  digitalocean:spacesAccessId: DO00UZX88V6EZ8G9FUZY
+  digitalocean:spacesSecretKey:
+    secure: AAABAKQAs3QkbP8170u0kvbsjzVhlwpEcNnF5iUECYcSAWJ2WEEn1NfnaE0e4NcZEuUZDZp4eWVFuRiixcjQbzZ99VmlFQ2FANah
   digitalocean:token:
     secure: AAABABU1AZlfBjR1wX7hncxt6sK4XX29RmZa4oYj19kYy3VrHqya1Nh3M6dJZwVj9iqahA52qiE+iHnEIe5w0kWdMdfrHtG5MowI7xmm+9v4CwRDGH5yXYp9iKT6Vu4Qz6QE+7mXBA==
   hcloud:endpoint: https://api.hetzner.cloud/v1

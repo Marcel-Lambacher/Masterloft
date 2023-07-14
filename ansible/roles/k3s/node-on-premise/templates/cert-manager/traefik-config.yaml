@@ -5,6 +5,22 @@ metadata:
   namespace: kube-system
 spec:
   valuesContent: |-
+    tolerations:
+    - key: "cloud.lambacher.eu/location"
+      value: "onpremise"
+      operator: "Equal"
+      effect: "NoSchedule"
+
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+          - matchExpressions:
+            - key: cloud.lambacher.eu/location
+              operator: In
+              values:
+              - onpremise
+              
     ports:
       websecure:
         tls:

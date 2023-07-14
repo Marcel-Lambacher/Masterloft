@@ -10,3 +10,83 @@ ingress:
     # traefik.ingress.kubernetes.io/router.middlewares: authelia-forwardauth-authelia@kubernetescrd
 
   host: longhorn.cloud.lambacher.eu
+
+global:
+  cattle:
+    systemDefaultRegistry: ""
+    windowsCluster:
+      enabled: false
+      tolerations:
+      - key: "cloud.lambacher.eu/location"
+        value: "onpremise"
+        effect: "NoSchedule"
+        operator: "Equal"
+      nodeSelector:
+        cloud.lambacher.eu/location: "onpremise"
+      defaultSetting:
+        taintToleration: cloud.lambacher.eu/location=onpremise:NoSchedule
+        systemManagedComponentsNodeSelector: cloud.lambacher.eu/location:onpremise
+
+defaultSettings:
+  taintToleration: cloud.lambacher.eu/location=onpremise:NoSchedule
+  systemManagedComponentsNodeSelector: cloud.lambacher.eu/location:onpremise
+
+
+persistence:
+  defaultNodeSelector:
+    enable: true
+    selector: cloud.lambacher.eu/location:onpremise
+
+longhornManager:
+  tolerations: 
+  - key: "cloud.lambacher.eu/location"
+    operator: "Equal"
+    value: "onpremise"
+    effect: "NoSchedule"
+  nodeSelector:
+    cloud.lambacher.eu/location: onpremise
+
+longhornDriver:
+  tolerations: 
+  - key: "cloud.lambacher.eu/location"
+    operator: "Equal"
+    value: "onpremise"
+    effect: "NoSchedule"
+  nodeSelector:
+    cloud.lambacher.eu/location: onpremise
+
+longhornConversionWebhook:
+  tolerations: 
+  - key: "cloud.lambacher.eu/location"
+    operator: "Equal"
+    value: "onpremise"
+    effect: "NoSchedule"
+  nodeSelector:
+    cloud.lambacher.eu/location: onpremise
+
+longhornAdmissionWebhook:
+  tolerations: 
+  - key: "cloud.lambacher.eu/location"
+    operator: "Equal"
+    value: "onpremise"
+    effect: "NoSchedule"
+  nodeSelector:
+    cloud.lambacher.eu/location: onpremise
+
+longhornRecoveryBackend:
+  tolerations: 
+  - key: "cloud.lambacher.eu/location"
+    operator: "Equal"
+    value: "onpremise"
+    effect: "NoSchedule"
+  nodeSelector:
+    cloud.lambacher.eu/location: onpremise
+
+longhornUI:
+  tolerations: 
+  - key: "cloud.lambacher.eu/location"
+    operator: "Equal"
+    value: "onpremise"
+    effect: "NoSchedule"
+  nodeSelector:
+    cloud.lambacher.eu/location: onpremise

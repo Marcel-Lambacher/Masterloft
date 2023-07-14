@@ -10,18 +10,5 @@ helmCharts:
   includeCRDs: false
   valuesFile: values.yaml
   releaseName: longhorn
-  version: 1.5.0
+  version:  1.4.1
   repo: https://charts.longhorn.io
-
-patches:
-  - patch: |-
-      kind: not-important
-      metadata:
-        name: not-important
-      spec:
-        template:
-          spec:
-            nodeSelector:
-              cloud.lambacher.eu/location: onpremise
-    target:
-      kind: (StatefulSet|Deployment|Job|Pod)

@@ -11,9 +11,6 @@ function createProjectWorkspace(): digitalocean.Project {
 }
 
 export function provisionDNS(config: pulumi.Config, publicIp: pulumi.Input<string>): digitalocean.Domain {
-
-    const project = createProjectWorkspace();
-
     const defaultDomain = new digitalocean.Domain(config.require("publicDomain"), {
         name: config.require("publicDomain"),
         ipAddress: publicIp
@@ -26,10 +23,23 @@ export function provisionDNS(config: pulumi.Config, publicIp: pulumi.Input<strin
         value: publicIp,
     });
 
+    return defaultDomain;
+}
+
+export function provisionBackupStorage(): digitalocean.SpacesBucket{
+    return new digitalocean.SpacesBucket("k8s-longhorn-backup", {
+        name: "k8s-longhorn-backup"
+    });
+}
+
+export function provision(config: pulumi.Config, publicIp: pulumi.Input<string>) {
+    const project = createProjectWorkspace();
+
+    const domain = provisionDNS(config, publicIp);
+    const space = provisionBackupStorage();
+
     new digitalocean.ProjectResources("Masterloft", {
         project: project.id,
-        resources: [ defaultDomain.domainUrn ],
+        resources: [ domain.domainUrn, space.bucketUrn ],
     });
-
-    return defaultDomain;
 }
