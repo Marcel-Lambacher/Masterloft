@@ -30,7 +30,8 @@ global:
 defaultSettings:
   taintToleration: cloud.lambacher.eu/location=onpremise:NoSchedule
   systemManagedComponentsNodeSelector: cloud.lambacher.eu/location:onpremise
-
+  backupTarget: s3://k8s-longhorn-backup@nyc3/main
+  backupTargetCredentialSecret: s3-secret
 
 persistence:
   defaultNodeSelector:

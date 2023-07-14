@@ -5,6 +5,8 @@ metadata:
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
+  annotations:
+    argocd.argoproj.io/sync-wave: "5"
 spec:
   destination:
     namespace: argocd
@@ -13,7 +15,7 @@ spec:
   source:
     path: argocd/apps/vaultwarden
     repoURL: 'https://github.com/Marcel-Lambacher/Masterloft.git'
-    targetRevision: HEAD
+    targetRevision: feature/wireguard-mesh
   syncPolicy:
     automated:
       prune: true

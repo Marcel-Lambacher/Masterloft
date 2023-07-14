@@ -3,7 +3,9 @@ kind: Kustomization
 namespace: longhorn
 resources:
   - namespace.yaml
-  - storageclass.yaml
+  - storageclass-important.yaml
+  - storageclass-temp.yaml
+  - sealed-s3-secret.json
 
 helmCharts:
 - name: longhorn

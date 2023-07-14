@@ -2,7 +2,7 @@ allowVolumeExpansion: true
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
-  name: longhorn-single-replica
+  name: longhorn-temp
 parameters:
   dataLocality: disabled
   fromBackup: ""

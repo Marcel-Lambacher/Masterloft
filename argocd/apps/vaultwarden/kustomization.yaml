@@ -12,5 +12,5 @@ helmCharts:
   includeCRDs: false
   valuesFile: values.yaml
   releaseName: vaultwarden
-  version: 0.46.0
-  repo: https://marcel-lambacher.github.io/onechart
+  version: 0.50.0
+  repo: https://chart.onechart.dev/
