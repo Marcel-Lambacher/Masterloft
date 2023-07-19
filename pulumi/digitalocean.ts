@@ -27,8 +27,8 @@ export function provisionDNS(config: pulumi.Config, publicIp: pulumi.Input<strin
 }
 
 export function provisionBackupStorage(): digitalocean.SpacesBucket{
-    return new digitalocean.SpacesBucket("k8s-longhorn-backup", {
-        name: "k8s-longhorn-backup"
+    return new digitalocean.SpacesBucket("masterloft-backup", {
+        name: "masterloft-backup"
     });
 }
 
