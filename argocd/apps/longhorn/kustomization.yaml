@@ -6,6 +6,8 @@ resources:
   - storageclass-important.yaml
   - storageclass-temp.yaml
   - sealed-s3-secret.json
+  - longhorn-important-backup-default.yaml
+  - longhorn-important-snap-default.yaml
 
 helmCharts:
 - name: longhorn

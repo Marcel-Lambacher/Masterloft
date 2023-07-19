@@ -8,12 +8,12 @@ parameters:
   fromBackup: ""
   recurringJobSelector: '[
       {
-        "name":"snap",
+        "name":"longhorn-important-backup-default",
         "isGroup":true
       },
       {
-        "name":"backup",
-        "isGroup":false
+        "name":"longhorn-important-snap-default",
+        "isGroup":true
       }
     ]'
   fsType: ext4
