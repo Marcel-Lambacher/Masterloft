@@ -55,7 +55,7 @@ export function provisionMasterNode(config: pulumi.Config): hcloud.Server {
    const fireWall = createFirewall();
     
     return new hcloud.Server("k8s-master-01", {
-        serverType: "cpx11",
+        serverType: "cpx41",
         image: "ubuntu-22.04",
         location: "nbg1",
         firewallIds: [ fireWall.id.apply(id => parseInt(id)) ],

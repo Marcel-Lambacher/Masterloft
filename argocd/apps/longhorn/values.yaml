@@ -25,18 +25,18 @@ global:
         cloud.lambacher.eu/location: "onpremise"
       defaultSetting:
         taintToleration: cloud.lambacher.eu/location=onpremise:NoSchedule
-        systemManagedComponentsNodeSelector: cloud.lambacher.eu/location:onpremise
+        # systemManagedComponentsNodeSelector: cloud.lambacher.eu/location:onpremise
 
 defaultSettings:
   taintToleration: cloud.lambacher.eu/location=onpremise:NoSchedule
-  systemManagedComponentsNodeSelector: cloud.lambacher.eu/location:onpremise
+  # systemManagedComponentsNodeSelector: cloud.lambacher.eu/location:onpremise
   backupTarget: s3://masterloft-backup@nyc3/main
   backupTargetCredentialSecret: s3-secret
 
-persistence:
-  defaultNodeSelector:
-    enable: true
-    selector: cloud.lambacher.eu/location:onpremise
+# persistence:
+#   defaultNodeSelector:
+#     enable: true
+#     selector: cloud.lambacher.eu/location:onpremise
 
 longhornManager:
   tolerations: 
@@ -44,8 +44,8 @@ longhornManager:
     operator: "Equal"
     value: "onpremise"
     effect: "NoSchedule"
-  nodeSelector:
-    cloud.lambacher.eu/location: onpremise
+  # nodeSelector:
+  #   cloud.lambacher.eu/location: onpremise
 
 longhornDriver:
   tolerations: 
@@ -53,8 +53,8 @@ longhornDriver:
     operator: "Equal"
     value: "onpremise"
     effect: "NoSchedule"
-  nodeSelector:
-    cloud.lambacher.eu/location: onpremise
+  # nodeSelector:
+  #   cloud.lambacher.eu/location: onpremise
 
 longhornConversionWebhook:
   tolerations: 
@@ -62,8 +62,8 @@ longhornConversionWebhook:
     operator: "Equal"
     value: "onpremise"
     effect: "NoSchedule"
-  nodeSelector:
-    cloud.lambacher.eu/location: onpremise
+  # nodeSelector:
+  #   cloud.lambacher.eu/location: onpremise
 
 longhornAdmissionWebhook:
   tolerations: 
@@ -71,8 +71,8 @@ longhornAdmissionWebhook:
     operator: "Equal"
     value: "onpremise"
     effect: "NoSchedule"
-  nodeSelector:
-    cloud.lambacher.eu/location: onpremise
+  # nodeSelector:
+  #   cloud.lambacher.eu/location: onpremise
 
 longhornRecoveryBackend:
   tolerations: 
@@ -80,8 +80,8 @@ longhornRecoveryBackend:
     operator: "Equal"
     value: "onpremise"
     effect: "NoSchedule"
-  nodeSelector:
-    cloud.lambacher.eu/location: onpremise
+  # nodeSelector:
+  #   cloud.lambacher.eu/location: onpremise
 
 longhornUI:
   tolerations: 
@@ -89,5 +89,5 @@ longhornUI:
     operator: "Equal"
     value: "onpremise"
     effect: "NoSchedule"
-  nodeSelector:
-    cloud.lambacher.eu/location: onpremise
+  # nodeSelector:
+  #   cloud.lambacher.eu/location: onpremise

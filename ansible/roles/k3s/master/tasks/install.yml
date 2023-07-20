@@ -105,6 +105,12 @@
     src: /home/{{ ansible_user }}/.kube/config
   register: kubeConfig
 
+- name: Replace kubernetes hostname
+  ansible.builtin.replace:
+    path: /home/{{ ansible_user }}/.kube/config
+    regexp: '127.0.0.1'
+    replace: '10.222.0.1'
+
 - name: Store kube config
   set_fact: 
     kubeConfig: "{{ kubeConfig.content }}"

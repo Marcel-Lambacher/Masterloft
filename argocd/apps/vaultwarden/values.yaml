@@ -16,12 +16,12 @@ ingress:
 
 tolerations:
   - key: "cloud.lambacher.eu/location"
-    value: "onpremise"
+    value: "cloud"
     operator: "Equal"
     effect: "NoSchedule"
 
 nodeSelector:
-  cloud.lambacher.eu/location: "onpremise"
+  cloud.lambacher.eu/location: "cloud"
 
 replicas: 1
 
