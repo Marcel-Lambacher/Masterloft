@@ -1,10 +1,10 @@
 
 [Interface]
-Address = 10.222.0.101/32
+Address = 10.222.0.101
 PrivateKey = {{ wireguard_local_private_key }}
  
 [Peer]
 PublicKey = {{ wireguard_cloud_public_key }}
 Endpoint = cloud.lambacher.eu:51871
-AllowedIPs = 10.222.0.0/24
-PersistentKeepalive = 29
+AllowedIPs = 10.222.0.1/32
+PersistentKeepalive = 25

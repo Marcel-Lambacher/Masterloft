@@ -2,7 +2,8 @@
 # SSH
 ssh_private_key_pass: "{{ vault_ssh_private_key_pass }}"
 ssh_private_key_file: "{{ vault_ssh_private_key_file }}"
-ansible_become_pass: test
+ssh_username: marlam
+ansible_sudo_pass: "{{ vault_ansible_sudo_pass }}"
 
 # Wireguard
 wireguard_cloud_public_key: "{{ vault_wireguard_cloud_public_key }}"
