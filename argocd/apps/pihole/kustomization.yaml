@@ -15,5 +15,5 @@ helmCharts:
   includeCRDs: false
   valuesFile: values.yaml
   releaseName: pihole
-  version: 2.10.0
+  version: 2.22.0
   repo: https://mojo2600.github.io/pihole-kubernetes/
